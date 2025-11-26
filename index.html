@@ -1,0 +1,2541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarsh Resolution Professionals | IBBI Registered IPE | Delhi's Premier Insolvency Experts</title>
+    <meta name="description" content="IBBI Registered Insolvency Professional Entity (IPE/0115) based in Delhi. Expert CIRP, Liquidation, and Debt Resolution services. Trusted by banks and NBFCs.">
+    <style>
+        :root {
+            --primary-navy: #1E3A8A;
+            --primary-gold: #D97706;
+            --primary-white: #FFFFFF;
+            --secondary-blue: #3B82F6;
+            --secondary-gray: #6B7280;
+            --accent-green: #10B981;
+            --accent-red: #EF4444;
+            --bg-light: #F9FAFB;
+            --bg-cream: #FFFEF9;
+            --text-dark: #1F2937;
+            --border-light: #E5E7EB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--primary-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-navy);
+        }
+
+        .cta-button {
+            background: var(--primary-gold);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #B45309;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-navy);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.95), rgba(59, 130, 246, 0.9)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231E3A8A" width="1200" height="600"/><path fill="%233B82F6" opacity="0.1" d="M0,300 Q300,200 600,300 T1200,300 L1200,600 L0,600 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .ibbi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.375rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #B45309;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(217, 119, 6, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Statistics Bar */
+        .stats-bar {
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 2.5rem 2rem;
+            margin-top: -3rem;
+            border-radius: 12px;
+            max-width: 1024px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-navy);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--secondary-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            padding: 4rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .trust-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .trust-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            min-width: 180px;
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+        }
+
+        .trust-text {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--secondary-gray);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+        }
+
+        /* Directors Section */
+        .directors-section {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .directors-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .directors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .director-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .director-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .director-image {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+            font-weight: 700;
+        }
+
+        .director-info {
+            padding: 2rem;
+        }
+
+        .director-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .director-title {
+            color: var(--primary-gold);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+        }
+
+        .director-details {
+            color: var(--secondary-gray);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .director-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-gray);
+            font-size: 0.95rem;
+        }
+
+        .contact-item strong {
+            color: var(--text-dark);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            color: var(--secondary-gray);
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: start;
+            gap: 0.5rem;
+        }
+
+        .service-features li::before {
+            content: "✓";
+            color: var(--accent-green);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border-light);
+            background: white;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--primary-navy);
+            background: var(--primary-navy);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border-light);
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .project-badge.resolved {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .project-badge.ongoing {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--secondary-blue);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .project-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            padding-right: 4rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--secondary-gray);
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .project-card p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .stat-mini {
+            text-align: center;
+        }
+
+        .stat-mini strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-mini span {
+            font-size: 0.875rem;
+            color: var(--secondary-gray);
+        }
+
+        /* Knowledge Portal */
+        .knowledge-section {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .knowledge-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .knowledge-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.875rem 2rem;
+            border: none;
+            background: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-dark);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--primary-navy);
+            color: white;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+        }
+
+        .knowledge-content {
+            min-height: 400px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .article-date {
+            color: var(--primary-gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-card h3 {
+            color: var(--primary-navy);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .article-card p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary-navy);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--primary-gold);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .resource-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-card p {
+            color: var(--secondary-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #B45309;
+            transform: translateY(-2px);
+        }
+
+        .insights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .insight-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-gold);
+        }
+
+        .insight-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 0.75rem;
+            gap: 1rem;
+        }
+
+        .insight-header h4 {
+            color: var(--primary-navy);
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .insight-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--secondary-gray);
+            white-space: nowrap;
+        }
+
+        .insight-item p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .newsletter-signup {
+            margin-top: 4rem;
+            background: linear-gradient(135deg, var(--primary-navy), var(--secondary-blue));
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .newsletter-signup h3 {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .newsletter-signup p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+        }
+
+        /* Careers Section */
+        .careers-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .careers-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .careers-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .benefit-card p {
+            color: var(--secondary-gray);
+            line-height: 1.6;
+        }
+
+        .openings-section {
+            margin: 4rem 0;
+        }
+
+        .openings-section h3 {
+            font-size: 2rem;
+            color: var(--primary-navy);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .openings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .opening-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .opening-card:hover {
+            border-color: var(--primary-gold);
+            transform: translateY(-4px);
+        }
+
+        .opening-card h4 {
+            color: var(--primary-navy);
+            font-size: 1.375rem;
+            margin-bottom: 1rem;
+        }
+
+        .opening-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--secondary-gray);
+        }
+
+        .opening-card p {
+            color: var(--secondary-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .apply-btn {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--primary-navy);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #1E40AF;
+            transform: translateY(-2px);
+        }
+
+        .empanelment-section {
+            background: var(--bg-light);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .empanelment-section h3 {
+            font-size: 1.75rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .empanelment-section p {
+            color: var(--secondary-gray);
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Portal Section */
+        .portal-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.05), rgba(59, 130, 246, 0.05));
+        }
+
+        .portal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .portal-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .portal-content p {
+            font-size: 1.25rem;
+            color: var(--secondary-gray);
+            margin-bottom: 2rem;
+        }
+
+        .portal-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .portal-features li {
+            color: var(--text-dark);
+            padding: 0.75rem 0;
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        .portal-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portal-mockup {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+
+        .mockup-header {
+            background: var(--primary-navy);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mockup-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .mockup-dots span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .mockup-title {
+            color: white;
+            font-weight: 600;
+        }
+
+        .mockup-body {
+            display: flex;
+            height: 350px;
+        }
+
+        .mockup-sidebar {
+            width: 80px;
+            background: var(--bg-light);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mockup-item {
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .mockup-item.active {
+            background: var(--primary-gold);
+        }
+
+        .mockup-content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .mockup-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            height: 80px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .contact-container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            color: var(--primary-navy);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: start;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-navy);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            color: var(--primary-navy);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-content p {
+            color: var(--secondary-gray);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-navy);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-required {
+            color: var(--accent-red);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: var(--primary-navy);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1E40AF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-navy);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
+            font-size: 1.25rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--secondary-gray);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .modal h2 {
+            text-align: center;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .modal p {
+            text-align: center;
+            color: var(--secondary-gray);
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.125rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .directors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portal-container {
+                grid-template-columns: 1fr;
+            }
+
+            .portal-mockup {
+                max-width: 100%;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                width: 100%;
+            }
+        }
+
+        /* Google Maps Integration Styles */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">A</div>
+                <span>Aarsh IPE</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#directors">Leadership</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#knowledge">Knowledge</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="cta-button" onclick="scrollToSection('contact')">Schedule Consultation</button>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="ibbi-badge">
+                ✓ IBBI Registered | Reg. No: IBBI/IPE/0115
+            </div>
+            <h1>Delhi's Premier Insolvency Resolution Professionals</h1>
+            <p class="hero-subtitle">
+                Expert CIRP, Liquidation &amp; Debt Resolution | Trusted by Leading Banks &amp; NBFCs | Fast-Track Solutions for Complex Cases
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('contact')">Schedule Consultation</button>
+                <button class="btn-secondary" onclick="scrollToSection('services')">View Our Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" data-target="50">0</span>
+                <span class="stat-label">Cases Managed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="500">0</span>
+                <span class="stat-label">₹ Crores Claims Handled</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="85">0</span>
+                <span class="stat-label">% Success Rate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="24">0</span>
+                <span class="stat-label">/ 7 Professional Support</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="trust-container">
+            <div class="trust-badges">
+                <div class="trust-badge">
+                    <div class="trust-icon">✓</div>
+                    <div class="trust-text">IBBI Registered Entity</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">🏛️</div>
+                    <div class="trust-text">Empaneled with Banks</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">📍</div>
+                    <div class="trust-text">Delhi-Based, Pan-India</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="trust-icon">⚡</div>
+                    <div class="trust-text">Fast-Track Resolution</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Aarsh Resolution Professionals</h2>
+            <p class="section-subtitle">
+                Recognized by IBBI on 22nd May 2020, we are a boutique Insolvency Professional Entity committed to delivering excellence in corporate restructuring and debt resolution.
+            </p>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>IBBI Registered Entity</h3>
+                    <p>
+                        <strong>Registration No:</strong> IBBI/IPE/0115<br>
+                        <strong>Recognition Date:</strong> 22 May 2020<br><br>
+                        As an officially recognized Insolvency Professional Entity, we operate within the regulatory framework of the Insolvency and Bankruptcy Board of India, ensuring compliance and ethical practices.
+                    </p>
+                </div>
+                
+                <div class="about-card">
+                    <h3>Why Choose Aarsh IPE</h3>
+                    <p>
+                        • <strong>Boutique Approach:</strong> Personalized attention to every case<br>
+                        • <strong>Local Expertise:</strong> Deep understanding of Delhi/NCR market<br>
+                        • <strong>Cost-Effective:</strong> Competitive pricing vs. Big 4 firms<br>
+                        • <strong>Faster Turnaround:</strong> Efficient resolution timelines<br>
+                        • <strong>Dedicated Teams:</strong> Relationship managers for each client
+                    </p>
+                </div>
+                
+                <div class="about-card">
+                    <h3>Our Approach</h3>
+                    <p>
+                        We believe in comprehensive due diligence, transparent communication, and ethical resolution practices. Our team excels in stakeholder management, ensuring all parties are kept informed throughout the resolution process.
+                    </p>
+                </div>
+                
+                <div class="about-card">
+                    <h3>Core Values</h3>
+                    <p>
+                        <strong>Integrity:</strong> Upholding the highest ethical standards<br>
+                        <strong>Expertise:</strong> Leveraging deep industry knowledge<br>
+                        <strong>Client-Centric:</strong> Prioritizing stakeholder interests<br>
+                        <strong>Innovation:</strong> Applying creative resolution strategies
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directors Section -->
+    <section class="directors-section" id="directors">
+        <div class="directors-container">
+            <h2 class="section-title">Leadership Team</h2>
+            <p class="section-subtitle">
+                Led by experienced professionals with extensive expertise in corporate restructuring and insolvency resolution
+            </p>
+            
+            <div class="directors-grid">
+                <div class="director-card">
+                    <div class="director-image">AM</div>
+                    <div class="director-info">
+                        <h3 class="director-name">Mr. Atul Mittal</h3>
+                        <p class="director-title">Director &amp; Managing Partner</p>
+                        <div class="director-details">
+                            <p><strong>Qualifications:</strong> Chartered Accountant, Company Secretary, Insolvency Professional</p>
+                            <p><strong>Experience:</strong> Practicing Insolvency Professional since 2017</p>
+                            <p><strong>Expertise:</strong> Corporate restructuring, CIRP management, liquidation processes, distressed asset advisory, business turnaround strategies</p>
+                            <p><strong>Notable Work:</strong> Handled complex insolvency cases across manufacturing, real estate, and services sectors with proven track record in maximizing creditor recoveries</p>
+                        </div>
+                        <div class="director-contact">
+                            <div class="contact-item">
+                                <strong>Email:</strong> atulmittalip135@gmail.com
+                            </div>
+                            <div class="contact-item">
+                                <strong>Phone:</strong> +91-9871830777
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="director-card">
+                    <div class="director-image">SG</div>
+                    <div class="director-info">
+                        <h3 class="director-name">Ms. Shrishti Garg</h3>
+                        <p class="director-title">Director</p>
+                        <div class="director-details">
+                            <p><strong>Qualifications:</strong> [Professional Certifications]</p>
+                            <p><strong>Experience:</strong> Extensive experience in insolvency and corporate advisory</p>
+                            <p><strong>Expertise:</strong> Stakeholder management, resolution planning, compliance and regulatory affairs, financial analysis, business valuation</p>
+                            <p><strong>Notable Work:</strong> Specializes in homebuyer cases and real estate CIRP with focus on project revival and stakeholder coordination</p>
+                        </div>
+                        <div class="director-contact">
+                            <div class="contact-item">
+                                <strong>Email:</strong> contact@aaarshrp.com
+                            </div>
+                            <div class="contact-item">
+                                <strong>Phone:</strong> +91-9871830777
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="services-container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">
+                Comprehensive insolvency and restructuring solutions tailored to your specific needs
+            </p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Corporate Insolvency Resolution Process (CIRP)</h3>
+                    <p>
+                        Complete CIRP management from initiation to resolution plan implementation, ensuring compliance and maximizing stakeholder value.
+                    </p>
+                    <ul class="service-features">
+                        <li>Interim Resolution Professional (IRP) services</li>
+                        <li>Resolution Professional (RP) appointment</li>
+                        <li>Resolution plan preparation &amp; implementation</li>
+                        <li>Committee of Creditors (CoC) management</li>
+                        <li>Stakeholder coordination &amp; communication</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Liquidation Services</h3>
+                    <p>
+                        Professional liquidation management ensuring optimal asset realization and equitable distribution to creditors.
+                    </p>
+                    <ul class="service-features">
+                        <li>Liquidator appointment &amp; management</li>
+                        <li>Asset identification &amp; valuation</li>
+                        <li>Asset realization strategies</li>
+                        <li>Claims verification &amp; distribution</li>
+                        <li>Compliance &amp; periodic reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Pre-Packaged Insolvency</h3>
+                    <p>
+                        Fast-track resolution for MSMEs through pre-packaged insolvency framework for quicker turnaround.
+                    </p>
+                    <ul class="service-features">
+                        <li>Pre-pack advisory &amp; structuring</li>
+                        <li>Base resolution plan development</li>
+                        <li>Swiss challenge mechanism support</li>
+                        <li>Fast-track resolution (120 days)</li>
+                        <li>Cost-effective restructuring</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏘️</div>
+                    <h3>Homebuyers Advisory</h3>
+                    <p>
+                        Specialized support for homebuyers in real estate CIRP cases, protecting their interests and facilitating project completion.
+                    </p>
+                    <ul class="service-features">
+                        <li>Real estate CIRP support</li>
+                        <li>Homebuyer claim filing assistance</li>
+                        <li>Project revival strategies</li>
+                        <li>Regular status updates</li>
+                        <li>Transparency &amp; communication</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Distressed Asset Advisory</h3>
+                    <p>
+                        Strategic advisory for businesses facing financial distress, offering turnaround solutions and restructuring strategies.
+                    </p>
+                    <ul class="service-features">
+                        <li>Debt restructuring strategies</li>
+                        <li>Business turnaround planning</li>
+                        <li>Valuation services</li>
+                        <li>Due diligence &amp; assessment</li>
+                        <li>Stakeholder negotiations</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Compliance &amp; Filings</h3>
+                    <p>
+                        Complete regulatory compliance management ensuring adherence to IBBI regulations and timely filings.
+                    </p>
+                    <ul class="service-features">
+                        <li>IBBI compliance management</li>
+                        <li>Periodic reporting to authorities</li>
+                        <li>Regulatory filings &amp; documentation</li>
+                        <li>Annual compliance &amp; audits</li>
+                        <li>Record maintenance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="projects-section" id="projects">
+        <div class="projects-container">
+            <h2 class="section-title">Our Assignments & Success Stories</h2>
+            <p class="section-subtitle">
+                Track record of successful resolutions across diverse industries
+            </p>
+            
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProjects('all')">All Cases</button>
+                <button class="filter-btn" onclick="filterProjects('resolved')">Resolved</button>
+                <button class="filter-btn" onclick="filterProjects('ongoing')">Ongoing</button>
+                <button class="filter-btn" onclick="filterProjects('real-estate')">Real Estate</button>
+                <button class="filter-btn" onclick="filterProjects('manufacturing')">Manufacturing</button>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card" data-status="resolved" data-industry="real-estate">
+                    <div class="project-badge resolved">Resolved</div>
+                    <h3>Residential Project Revival</h3>
+                    <div class="project-meta">
+                        <span>🏘️ Real Estate</span>
+                        <span>₹180 Cr Claims</span>
+                        <span>⏱️ 14 Months</span>
+                    </div>
+                    <p>Successfully revived stalled residential project with 500+ homebuyers. Achieved 92% claim recovery through strategic resolution plan.</p>
+                    <div class="project-stats">
+                        <div class="stat-mini">
+                            <strong>92%</strong>
+                            <span>Recovery Rate</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>500+</strong>
+                            <span>Homebuyers</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>14</strong>
+                            <span>Months</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-status="resolved" data-industry="manufacturing">
+                    <div class="project-badge resolved">Resolved</div>
+                    <h3>Manufacturing Unit Turnaround</h3>
+                    <div class="project-meta">
+                        <span>🏭 Manufacturing</span>
+                        <span>₹65 Cr Claims</span>
+                        <span>⏱️ 11 Months</span>
+                    </div>
+                    <p>Led CIRP for manufacturing company, negotiated resolution plan preserving 85% jobs while ensuring 88% creditor recovery.</p>
+                    <div class="project-stats">
+                        <div class="stat-mini">
+                            <strong>88%</strong>
+                            <span>Recovery</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>85%</strong>
+                            <span>Jobs Saved</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>11</strong>
+                            <span>Months</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-status="ongoing" data-industry="real-estate">
+                    <div class="project-badge ongoing">Ongoing</div>
+                    <h3>Commercial Complex Resolution</h3>
+                    <div class="project-meta">
+                        <span>🏢 Real Estate</span>
+                        <span>₹250 Cr Claims</span>
+                        <span>⏱️ In Progress</span>
+                    </div>
+                    <p>Managing CIRP for commercial real estate project with complex stakeholder structure. Currently in resolution planning phase.</p>
+                    <div class="project-stats">
+                        <div class="stat-mini">
+                            <strong>Phase 3</strong>
+                            <span>Current Stage</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>12</strong>
+                            <span>Creditors</span>
+                        </div>
+                        <div class="stat-mini">
+                            <strong>8</strong>
+                            <span>Months Elapsed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Portal Section -->
+    <section class="knowledge-section" id="knowledge">
+        <div class="knowledge-container">
+            <h2 class="section-title">Knowledge Portal</h2>
+            <p class="section-subtitle">
+                Stay informed with insights, regulations, and industry updates
+            </p>
+            
+            <div class="knowledge-tabs">
+                <button class="tab-btn active" onclick="switchTab('articles')">Latest Articles</button>
+                <button class="tab-btn" onclick="switchTab('resources')">Resources</button>
+                <button class="tab-btn" onclick="switchTab('insights')">Industry Insights</button>
+            </div>
+            
+            <div class="knowledge-content">
+                <div class="tab-content active" id="articles">
+                    <div class="articles-grid">
+                        <article class="article-card">
+                            <div class="article-date">Nov 15, 2024</div>
+                            <h3>Understanding the CIRP Process: A Step-by-Step Guide</h3>
+                            <p>Comprehensive walkthrough of the Corporate Insolvency Resolution Process, timelines, and stakeholder roles under IBC 2016.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        
+                        <article class="article-card">
+                            <div class="article-date">Nov 8, 2024</div>
+                            <h3>Rights of Homebuyers in Real Estate Insolvency</h3>
+                            <p>Detailed analysis of homebuyer rights as financial creditors and representation in Committee of Creditors.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        
+                        <article class="article-card">
+                            <div class="article-date">Oct 28, 2024</div>
+                            <h3>Section 29A Eligibility: What You Need to Know</h3>
+                            <p>Complete guide to Section 29A ineligibility criteria for resolution applicants and recent judicial interpretations.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                        
+                        <article class="article-card">
+                            <div class="article-date">Oct 20, 2024</div>
+                            <h3>Pre-Pack Insolvency: Fast-Track Resolution for MSMEs</h3>
+                            <p>Analysis of the Pre-Packaged Insolvency Resolution framework introduced for Micro, Small and Medium Enterprises.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="resources">
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <div class="resource-icon">📄</div>
+                            <h4>IBC Act 2016</h4>
+                            <p>Complete Insolvency and Bankruptcy Code</p>
+                            <button class="download-btn">Download PDF</button>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">📋</div>
+                            <h4>IBBI Regulations</h4>
+                            <p>Latest IBBI regulations and circulars</p>
+                            <button class="download-btn">Download PDF</button>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">📝</div>
+                            <h4>Claim Filing Templates</h4>
+                            <p>Standard forms for creditor claims</p>
+                            <button class="download-btn">Download ZIP</button>
+                        </div>
+                        
+                        <div class="resource-card">
+                            <div class="resource-icon">📊</div>
+                            <h4>Process Flowcharts</h4>
+                            <p>Visual guides for CIRP and liquidation</p>
+                            <button class="download-btn">Download PDF</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="insights">
+                    <div class="insights-list">
+                        <div class="insight-item">
+                            <div class="insight-header">
+                                <h4>Q3 2024 Resolution Statistics</h4>
+                                <span class="insight-tag">Market Update</span>
+                            </div>
+                            <p>IBBI reports 15% increase in successful resolutions during Q3 2024, with average recovery rate of 32.8% for creditors.</p>
+                        </div>
+                        
+                        <div class="insight-item">
+                            <div class="insight-header">
+                                <h4>Supreme Court Clarifies Section 29A</h4>
+                                <span class="insight-tag">Regulatory</span>
+                            </div>
+                            <p>Recent judgment provides clarity on connected persons and ineligibility criteria for resolution applicants.</p>
+                        </div>
+                        
+                        <div class="insight-item">
+                            <div class="insight-header">
+                                <h4>Pre-Pack Framework Gains Traction</h4>
+                                <span class="insight-tag">Industry Trend</span>
+                            </div>
+                            <p>200+ MSME cases admitted under PPIRP since introduction, showing promising resolution timelines under 120 days.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="newsletter-signup">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get monthly insights, regulatory updates, and industry analysis delivered to your inbox</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section class="careers-section" id="careers">
+        <div class="careers-container">
+            <h2 class="section-title">Join Our Team</h2>
+            <p class="section-subtitle">
+                Build your career with Delhi's fastest-growing insolvency professional entity
+            </p>
+            
+            <div class="careers-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h4>Diverse Experience</h4>
+                    <p>Work across multiple industries and complex cases</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h4>Professional Growth</h4>
+                    <p>Continuous learning and skill development opportunities</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h4>Work-Life Balance</h4>
+                    <p>Flexible work arrangements with supportive culture</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h4>Competitive Package</h4>
+                    <p>Industry-leading compensation and benefits</p>
+                </div>
+            </div>
+            
+            <div class="openings-section">
+                <h3>Current Openings</h3>
+                <div class="openings-grid">
+                    <div class="opening-card">
+                        <h4>Resolution Professional (Experienced)</h4>
+                        <div class="opening-meta">
+                            <span>📍 Delhi NCR</span>
+                            <span>💼 Full Time</span>
+                            <span>⏰ 3-7 years</span>
+                        </div>
+                        <p>IBBI registered professional to manage CIRP cases. Experience in real estate and manufacturing sectors preferred.</p>
+                        <button class="apply-btn" onclick="openCareerModal('rp')">Apply Now</button>
+                    </div>
+                    
+                    <div class="opening-card">
+                        <h4>Chartered Accountant</h4>
+                        <div class="opening-meta">
+                            <span>📍 Delhi NCR</span>
+                            <span>💼 Full Time</span>
+                            <span>⏰ 2-5 years</span>
+                        </div>
+                        <p>CA with experience in financial analysis, valuation, and insolvency matters. Exposure to IBC cases is a plus.</p>
+                        <button class="apply-btn" onclick="openCareerModal('ca')">Apply Now</button>
+                    </div>
+                    
+                    <div class="opening-card">
+                        <h4>Legal Associate</h4>
+                        <div class="opening-meta">
+                            <span>📍 Delhi NCR</span>
+                            <span>💼 Full Time</span>
+                            <span>⏰ 1-3 years</span>
+                        </div>
+                        <p>Law graduate to assist with NCLT proceedings, legal documentation, and compliance matters.</p>
+                        <button class="apply-btn" onclick="openCareerModal('legal')">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="empanelment-section">
+                <h3>Join Our Empaneled Professionals Network</h3>
+                <p>We're always looking to collaborate with experienced insolvency professionals</p>
+                <button class="cta-button" onclick="scrollToSection('contact')">Express Interest</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Portal Teaser -->
+    <section class="portal-section">
+        <div class="portal-container">
+            <div class="portal-content">
+                <h2>Client Portal</h2>
+                <p>Secure access to case status, documents, and reports</p>
+                <ul class="portal-features">
+                    <li>✓ Real-time case status tracking</li>
+                    <li>✓ Secure document repository</li>
+                    <li>✓ Communication logs</li>
+                    <li>✓ Payment history</li>
+                    <li>✓ Meeting schedules</li>
+                </ul>
+                <button class="btn-primary" onclick="openPortalModal()">Request Portal Access</button>
+            </div>
+            <div class="portal-visual">
+                <div class="portal-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="mockup-title">Aarsh IPE Client Portal</div>
+                    </div>
+                    <div class="mockup-body">
+                        <div class="mockup-sidebar">
+                            <div class="mockup-item active"></div>
+                            <div class="mockup-item"></div>
+                            <div class="mockup-item"></div>
+                            <div class="mockup-item"></div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-card"></div>
+                            <div class="mockup-card"></div>
+                            <div class="mockup-card"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Schedule a consultation or reach out for any inquiries. We respond within 24 hours.
+            </p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h4>Registered Office</h4>
+                            <p>
+                                163, Balco Apartments, Plot No. 58,<br>
+                                IP Extension, Patparganj,<br>
+                                Delhi-110092, India
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+91-9871830777</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>contact@aaarshrp.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">🕐</div>
+                        <div class="info-content">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Saturday<br>9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Name <span class="form-required">*</span></label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email <span class="form-required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone <span class="form-required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="queryType">Query Type</label>
+                            <select id="queryType" name="queryType">
+                                <option value="">Select query type</option>
+                                <option value="cirp">CIRP Services</option>
+                                <option value="liquidation">Liquidation Services</option>
+                                <option value="homebuyer">Homebuyer Query</option>
+                                <option value="career">Career/Recruitment</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message <span class="form-required">*</span></label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Google Maps Integration -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0123456789!2d77.2!3d28.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDM2JzAwLjAiTiA3N8KwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Aarsh Resolution Professionals Office Location">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Aarsh Resolution Professionals</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); line-height: 1.7;">
+                        IBBI Registered Insolvency Professional Entity dedicated to providing comprehensive insolvency and restructuring solutions.
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem; font-size: 0.9rem;">
+                        <strong>IBBI Reg:</strong> IBBI/IPE/0115<br>
+                        <strong>Recognized:</strong> 22 May 2020
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#directors">Leadership</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Case Studies</a></li>
+                        <li><a href="#knowledge">Knowledge Portal</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">CIRP Services</a></li>
+                        <li><a href="#services">Liquidation</a></li>
+                        <li><a href="#services">Pre-Pack Insolvency</a></li>
+                        <li><a href="#services">Homebuyer Advisory</a></li>
+                        <li><a href="#services">Distressed Assets</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>📍 163, Balco Apartments<br>&nbsp;&nbsp;&nbsp;&nbsp;IP Extension, Delhi-110092</li>
+                        <li>📞 +91-9871830777</li>
+                        <li>✉️ contact@aaarshrp.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aarsh Resolution Professionals Private Limited. All rights reserved. | IBBI/IPE/0115</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="success-icon">✓</div>
+            <h2>Thank You!</h2>
+            <p>
+                Your inquiry has been received. Our team will contact you within 24 hours.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scrolling
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            }
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
+
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const updateCount = () => {
+                    const current = parseInt(counter.textContent);
+                    const increment = target / speed;
+
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current + increment);
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Intersection Observer for Counter Animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsBar = document.querySelector('.stats-bar');
+        if (statsBar) {
+            statsObserver.observe(statsBar);
+        }
+
+        // Form Submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            // Log form data (in production, send to server)
+            console.log('Form submitted:', data);
+
+            // Show success modal
+            document.getElementById('successModal').classList.add('active');
+
+            // Reset form
+            event.target.reset();
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        // Close modal on outside click
+        document.getElementById('successModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    const navLinks = document.getElementById('navLinks');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+
+        // Project Filtering
+        function filterProjects(filter) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            cards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else if (filter === 'resolved' || filter === 'ongoing') {
+                    card.style.display = card.dataset.status === filter ? 'block' : 'none';
+                } else {
+                    card.style.display = card.dataset.industry === filter ? 'block' : 'none';
+                }
+            });
+        }
+
+        // Knowledge Tabs
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Newsletter Signup
+        function handleNewsletterSignup(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            console.log('Newsletter signup:', email);
+            alert('Thank you for subscribing! You will receive our monthly newsletter.');
+            event.target.reset();
+        }
+
+        // Career Modal
+        function openCareerModal(position) {
+            alert(`Application form for ${position} position would open here. In production, this would open a detailed application form with resume upload functionality.`);
+        }
+
+        // Portal Modal
+        function openPortalModal() {
+            alert('Portal access request form would open here. In production, this would collect client details and initiate secure portal onboarding process.');
+        }
+
+        // Add smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animations
+        document.querySelectorAll('.project-card, .article-card, .benefit-card, .opening-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add live chat widget placeholder
+        function initLiveChat() {
+            const chatButton = document.createElement('div');
+            chatButton.innerHTML = '💬';
+            chatButton.style.cssText = `
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                width: 60px;
+                height: 60px;
+                background: var(--primary-gold);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.75rem;
+                cursor: pointer;
+                box-shadow: 0 4px 16px rgba(217, 119, 6, 0.3);
+                z-index: 999;
+                transition: transform 0.3s;
+            `;
+            chatButton.addEventListener('mouseenter', () => {
+                chatButton.style.transform = 'scale(1.1)';
+            });
+            chatButton.addEventListener('mouseleave', () => {
+                chatButton.style.transform = 'scale(1)';
+            });
+            chatButton.addEventListener('click', () => {
+                alert('Live chat would open here. In production, integrate with Tawk.to or Intercom for real-time support.');
+            });
+            document.body.appendChild(chatButton);
+        }
+
+        // Initialize live chat on page load
+        initLiveChat();
+
+        // SEO: Add structured data (JSON-LD)
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Aarsh Resolution Professionals Private Limited",
+            "image": "https://aaarshrp.com/logo.png",
+            "description": "IBBI Registered Insolvency Professional Entity providing CIRP, Liquidation, and Debt Resolution services in Delhi NCR",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "163, Balco Apartments, Plot No. 58, IP Extension, Patparganj",
+                "addressLocality": "Delhi",
+                "postalCode": "110092",
+                "addressCountry": "IN"
+            },
+            "telephone": "+91-9871830777",
+            "email": "contact@aaarshrp.com",
+            "url": "https://aaarshrp.com",
+            "priceRange": "$$",
+            "areaServed": {
+                "@type": "Country",
+                "name": "India"
+            },
+            "founder": {
+                "@type": "Person",
+                "name": "Atul Mittal",
+                "jobTitle": "Director & Managing Partner"
+            }
+        };
+
+        const script = document.createElement('script');
+        script.type = 'application/ld+json';
+        script.text = JSON.stringify(structuredData);
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
+
