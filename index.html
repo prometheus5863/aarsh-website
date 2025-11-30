@@ -40,6 +40,13 @@
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 2s linear infinite',
+                    },
+                    keyframes: {
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
+                        }
                     }
                 }
             }
@@ -145,6 +152,15 @@
             0%, 80%, 100% { transform: scale(0); }
             40% { transform: scale(1); }
         }
+
+        /* Voice Wave Animation */
+        .voice-wave { display: inline-flex; align-items: center; gap: 2px; height: 20px; }
+        .voice-bar { width: 3px; background-color: #C2410C; animation: wave 1s ease-in-out infinite; }
+        .voice-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
+        .voice-bar:nth-child(2) { height: 80%; animation-delay: 0.2s; }
+        .voice-bar:nth-child(3) { height: 50%; animation-delay: 0.3s; }
+        .voice-bar:nth-child(4) { height: 70%; animation-delay: 0.4s; }
+        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
     </style>
 </head>
 <body class="antialiased selection:bg-neo-rust selection:text-white">
@@ -168,6 +184,7 @@
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Home</a>
                     <a href="#about" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">About</a>
+                    <a href="#decoder" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm text-neo-rust">AI Decoder ✨</a>
                     <a href="#services" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Services</a>
                     <a href="#stats" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Impact</a>
                     <a href="#contact" class="px-6 py-2 bg-neo-dark text-white font-bold brutal-border hover:bg-neo-rust transition-colors shadow-neo hover:shadow-neo-hover uppercase text-sm transform hover:-translate-y-0.5">Contact Us</a>
@@ -184,6 +201,7 @@
             <div class="flex flex-col p-4 space-y-4">
                 <a href="#home" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Home</a>
                 <a href="#about" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">About</a>
+                <a href="#decoder" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">AI Decoder</a>
                 <a href="#services" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Services</a>
                 <a href="#stats" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Impact</a>
                 <a href="#contact" class="w-full text-center px-6 py-3 bg-neo-rust text-white font-bold brutal-border shadow-neo">Get In Touch</a>
@@ -285,6 +303,48 @@
                         <div class="absolute -top-4 -right-4 bg-neo-dark text-white p-3 brutal-border transform rotate-3">
                             <span class="font-bold font-display">Since 2010</span>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE: THE LEGAL DECODER (GEMINI POWERED) -->
+    <section id="decoder" class="py-24 bg-neo-dark text-white relative overflow-hidden border-t-2 border-b-2 border-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <div class="inline-block bg-neo-rust px-4 py-1 font-bold uppercase tracking-widest text-sm mb-4 transform -rotate-2 brutal-border border-white">New Tool</div>
+                <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">LEGAL <span class="text-neo-rust">DECODER</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Confused by complex insolvency jargon? Paste the legal text below, and our AI will translate it into plain English.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
+                <!-- Input Terminal -->
+                <div class="bg-black p-1 brutal-border border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+                    <div class="bg-gray-900 h-full p-6 flex flex-col">
+                        <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
+                            <span class="font-mono text-xs text-neo-rust">INPUT_SOURCE.txt</span>
+                            <div class="flex gap-1"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div>
+                        </div>
+                        <textarea id="decoderInput" class="w-full h-48 bg-transparent text-green-400 font-mono text-sm focus:outline-none resize-none" placeholder="// Paste legal text here (e.g., 'Section 29A of IBC states that...')"></textarea>
+                        <button id="decodeBtn" class="mt-4 w-full bg-neo-rust hover:bg-white hover:text-black text-white font-bold py-3 uppercase tracking-wider transition-colors border border-white flex justify-center items-center gap-2">
+                            <span>✨ Decrypt Text</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Output Terminal -->
+                <div class="bg-neo-bg p-1 brutal-border border-white shadow-[8px_8px_0px_0px_#C2410C]">
+                    <div class="bg-white h-full p-6 flex flex-col relative overflow-hidden text-black">
+                         <div class="flex justify-between items-center mb-4 border-b-2 border-black pb-2">
+                            <span class="font-mono text-xs font-bold">SIMPLIFIED_OUTPUT.md</span>
+                            <span class="font-mono text-xs bg-black text-white px-2">READ_ONLY</span>
+                        </div>
+                        <div id="decoderOutput" class="flex-1 font-sans text-sm leading-relaxed overflow-y-auto">
+                            <p class="text-gray-400 italic">Waiting for input data...</p>
+                        </div>
+                        <!-- Scanning Line Animation -->
+                        <div id="scanLine" class="absolute inset-0 bg-gradient-to-b from-transparent via-neo-rust/20 to-transparent h-4 w-full pointer-events-none hidden animate-scan"></div>
                     </div>
                 </div>
             </div>
@@ -589,6 +649,13 @@
             
             <!-- Input Area -->
             <div class="p-3 bg-white border-t-2 border-black">
+                <!-- Voice Toggle -->
+                <div class="flex items-center justify-between mb-2 px-1">
+                    <span class="text-xs font-bold text-gray-500 uppercase">Voice Mode</span>
+                    <button id="voiceToggle" class="w-10 h-5 bg-gray-300 rounded-full relative transition-colors duration-200">
+                        <div class="w-3 h-3 bg-white rounded-full absolute top-1 left-1 transition-transform duration-200"></div>
+                    </button>
+                </div>
                 <div class="flex gap-2">
                     <input type="text" id="chatInput" placeholder="Ask a question..." class="flex-1 p-2 bg-gray-50 border-2 border-black focus:outline-none focus:border-neo-rust text-sm font-medium">
                     <button id="sendChat" class="px-4 py-2 bg-neo-rust text-white font-bold border-2 border-black hover:bg-neo-dark transition-colors">
@@ -632,42 +699,215 @@
 
     <!-- Interaction Logic -->
     <script>
-        // Gemini API Configuration
-        const apiKey = ""; // Provided by runtime environment
+        const apiKey = ""; // Runtime key
+        let isVoiceEnabled = false;
+
+        // --- GEMINI API HELPERS ---
         
-        async function callGeminiAPI(prompt, systemInstruction) {
+        async function callGeminiText(prompt, systemInstruction) {
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 systemInstruction: { parts: [{ text: systemInstruction }] }
             };
-
-            // Retry logic with exponential backoff
-            const delays = [1000, 2000, 4000, 8000, 16000];
-            for (let i = 0; i <= delays.length; i++) {
+            
+            // Retry Logic
+            for (let i = 0; i < 3; i++) {
                 try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
-                    
-                    const data = await response.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "I apologize, but I couldn't generate a response at this moment.";
-                } catch (error) {
-                    if (i === delays.length) return "Network error. Please try again later.";
-                    await new Promise(resolve => setTimeout(resolve, delays[i]));
-                }
+                    const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                    if(!res.ok) throw new Error(res.status);
+                    const data = await res.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "System Error.";
+                } catch(e) { await new Promise(r => setTimeout(r, 1000 * (i+1))); }
             }
+            return "Connection failed.";
+        }
+
+        async function callGeminiTTS(text) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: text }] }],
+                generationConfig: {
+                    responseModalities: ["AUDIO"],
+                    speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } }
+                }
+            };
+            
+            try {
+                const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (!res.ok) return null;
+                const data = await res.json();
+                const base64Audio = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
+                if (!base64Audio) return null;
+                
+                // Decode Base64 to ArrayBuffer
+                const binaryString = window.atob(base64Audio);
+                const len = binaryString.length;
+                const bytes = new Uint8Array(len);
+                for (let i = 0; i < len; i++) { bytes[i] = binaryString.charCodeAt(i); }
+                
+                // Convert PCM (Audio/L16) to WAV
+                return pcmToWav(bytes.buffer, 24000); 
+            } catch (e) { console.error(e); return null; }
+        }
+
+        // --- PCM TO WAV UTILITY ---
+        function pcmToWav(pcmData, sampleRate) {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const byteRate = sampleRate * numChannels * bitsPerSample / 8;
+            const blockAlign = numChannels * bitsPerSample / 8;
+            const dataSize = pcmData.byteLength;
+            const buffer = new ArrayBuffer(44 + dataSize);
+            const view = new DataView(buffer);
+
+            const writeString = (view, offset, string) => {
+                for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i));
+            };
+
+            writeString(view, 0, 'RIFF');
+            view.setUint32(4, 36 + dataSize, true);
+            writeString(view, 8, 'WAVE');
+            writeString(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true); // PCM
+            view.setUint16(22, numChannels, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, byteRate, true);
+            view.setUint16(32, blockAlign, true);
+            view.setUint16(34, bitsPerSample, true);
+            writeString(view, 36, 'data');
+            view.setUint32(40, dataSize, true);
+            
+            new Uint8Array(buffer, 44).set(new Uint8Array(pcmData));
+            return buffer;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- EXISTING LOGIC ---
+            // 1. Voice Toggle Logic
+            const voiceToggle = document.getElementById('voiceToggle');
+            const toggleDot = voiceToggle.querySelector('div');
+            
+            voiceToggle.addEventListener('click', () => {
+                isVoiceEnabled = !isVoiceEnabled;
+                if (isVoiceEnabled) {
+                    voiceToggle.classList.remove('bg-gray-300');
+                    voiceToggle.classList.add('bg-neo-rust');
+                    toggleDot.classList.add('translate-x-5');
+                } else {
+                    voiceToggle.classList.add('bg-gray-300');
+                    voiceToggle.classList.remove('bg-neo-rust');
+                    toggleDot.classList.remove('translate-x-5');
+                }
+            });
 
-            // 1. Navigation Logic
+            // 2. Chat Logic (Upgraded with TTS)
+            const chatMessages = document.getElementById('chatMessages');
+            const chatInput = document.getElementById('chatInput');
+            
+            function addMessage(text, isUser, isAudio = false) {
+                const div = document.createElement('div');
+                div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
+                
+                let content = text.replace(/\n/g, '<br>');
+                if (isAudio) {
+                    content += `
+                        <div class="mt-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase">
+                            <span>Playing Audio</span>
+                            <div class="voice-wave">
+                                <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
+                            </div>
+                        </div>`;
+                }
+
+                div.innerHTML = `
+                    <div class="${isUser ? 'bg-neo-rust text-white' : 'bg-white'} border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">
+                        ${content}
+                    </div>`;
+                
+                chatMessages.appendChild(div);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            async function handleChat() {
+                const text = chatInput.value.trim();
+                if (!text) return;
+
+                addMessage(text, true);
+                chatInput.value = '';
+                
+                // Typing Indicator
+                const loader = document.createElement('div');
+                loader.className = 'flex justify-start';
+                loader.innerHTML = `<div class="bg-white border-2 border-black p-3 text-sm shadow-sm flex gap-1"><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div></div>`;
+                chatMessages.appendChild(loader);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+                // Call Gemini
+                let systemPrompt = "You are the AI Assistant for Aarsh Resolution Professionals. Explain Indian Insolvency Code concepts clearly and professionally. Keep it concise.";
+                if (isVoiceEnabled) systemPrompt += " Keep the response suitable for spoken audio (short sentences, no bullet points).";
+
+                let responseText = await callGeminiText(text, systemPrompt);
+                let audioBuffer = null;
+
+                if (isVoiceEnabled) {
+                     audioBuffer = await callGeminiTTS(responseText);
+                }
+                
+                loader.remove();
+                addMessage(responseText, false, !!audioBuffer);
+
+                if (audioBuffer) {
+                    const blob = new Blob([audioBuffer], { type: 'audio/wav' });
+                    const audioUrl = URL.createObjectURL(blob);
+                    const audio = new Audio(audioUrl);
+                    audio.play();
+                }
+            }
+
+            document.getElementById('sendChat').addEventListener('click', handleChat);
+            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
+            
+            // Toggle Chat Widget
+            const chatWindow = document.getElementById('chatWindow');
+            document.getElementById('toggleChatBtn').addEventListener('click', () => {
+                chatWindow.classList.toggle('closed');
+                if(!chatWindow.classList.contains('closed')) chatInput.focus();
+            });
+            document.getElementById('closeChat').addEventListener('click', () => chatWindow.classList.add('closed'));
+
+
+            // 3. Feature: The Legal Decoder
+            const decodeBtn = document.getElementById('decodeBtn');
+            const decoderInput = document.getElementById('decoderInput');
+            const decoderOutput = document.getElementById('decoderOutput');
+            const scanLine = document.getElementById('scanLine');
+
+            decodeBtn.addEventListener('click', async () => {
+                const text = decoderInput.value.trim();
+                if (!text) return;
+
+                decodeBtn.disabled = true;
+                decodeBtn.innerHTML = "<span>Processing...</span>";
+                scanLine.classList.remove('hidden');
+                decoderOutput.innerHTML = "<p class='text-gray-400 italic'>Analyzing legal syntax...</p>";
+
+                const prompt = `Rewrite this legal text into simple, plain English that a non-lawyer can understand. Break it down if necessary. Text: "${text}"`;
+                const systemPrompt = "You are an expert legal translator. Your goal is extreme clarity. Remove jargon.";
+
+                const result = await callGeminiText(prompt, systemPrompt);
+
+                scanLine.classList.add('hidden');
+                decoderOutput.innerHTML = `<p class="font-bold mb-2">Analysis Complete:</p><p>${result.replace(/\n/g, '<br>')}</p>`;
+                decodeBtn.disabled = false;
+                decodeBtn.innerHTML = "<span>✨ Decrypt Text</span>";
+            });
+
+
+            // --- EXISTING LOGIC PRESERVED ---
+
+            // Navigation Logic
             const navbar = document.getElementById('navbar');
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
@@ -676,18 +916,15 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     mobileMenu.classList.add('hidden');
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) target.scrollIntoView({ behavior: 'smooth' });
                 });
             });
 
-            // Navbar shrink on scroll
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     navbar.classList.add('shadow-neo');
@@ -698,58 +935,41 @@
                 }
             });
 
-            // 2. Intersection Observer for Scroll Reveals
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
+            // Reveal Animation
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('active');
                 });
             }, observerOptions);
-
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // 3. Counter Animation Logic
+            // Counter Logic
             const counterObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const target = parseInt(entry.target.getAttribute('data-target'));
-                        const duration = 2000; // ms
+                        const duration = 2000;
                         const startTime = performance.now();
-                        
                         function update(currentTime) {
                             const elapsed = currentTime - startTime;
                             const progress = Math.min(elapsed / duration, 1);
-                            
-                            // EaseOutExpo function for smooth finish
                             const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                            
                             entry.target.innerText = Math.floor(target * ease);
-                            
-                            if (progress < 1) {
-                                requestAnimationFrame(update);
-                            } else {
-                                entry.target.innerText = target + (target > 100 ? '+' : '');
-                            }
+                            if (progress < 1) requestAnimationFrame(update);
+                            else entry.target.innerText = target + (target > 100 ? '+' : '');
                         }
-                        
                         requestAnimationFrame(update);
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.5 });
-
             document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-            // 4. Chart.js Implementation
+            // Chart.js
             const ctx = document.getElementById('experienceChart').getContext('2d');
             Chart.defaults.font.family = "'Space Grotesk', sans-serif";
-            const myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Banking', 'Legal', 'Operations', 'Finance'],
@@ -774,22 +994,36 @@
                 }
             });
 
-            // 5. Contact Form Handler (Simulation)
+            // Smart Draft Logic
+            const magicDraftBtn = document.getElementById('magicDraftBtn');
+            const messageBox = document.getElementById('messageBox');
+            magicDraftBtn.addEventListener('click', async () => {
+                const currentText = messageBox.value.trim();
+                let topic = currentText;
+                if (!topic) {
+                    topic = prompt("What would you like to inquire about?");
+                    if (!topic) return;
+                }
+                magicDraftBtn.innerText = "✨ Drafting...";
+                messageBox.placeholder = 'AI is writing your message...';
+                messageBox.value = ""; 
+                const draft = await callGeminiText(`Draft a formal inquiry about: "${topic}".`, "Professional tone.");
+                messageBox.value = draft;
+                magicDraftBtn.innerText = "✨ Smart Draft";
+            });
+
+            // Contact Form
             document.getElementById('contactForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const btn = e.target.querySelector('button[type="submit"]');
                 const originalText = btn.innerText;
-                
                 btn.innerText = "SENDING...";
                 btn.disabled = true;
                 btn.classList.add('opacity-75');
-
-                // Simulate backend request
                 setTimeout(() => {
                     btn.innerText = "MESSAGE SENT ✓";
                     btn.classList.replace('bg-neo-rust', 'bg-green-600');
                     e.target.reset();
-                    
                     setTimeout(() => {
                         btn.innerText = originalText;
                         btn.disabled = false;
@@ -798,112 +1032,7 @@
                     }, 3000);
                 }, 1500);
             });
-
-
-            // --- NEW GEMINI AI FEATURES ---
-
-            // Feature 1: AI Chat Widget Logic
-            const toggleChatBtn = document.getElementById('toggleChatBtn');
-            const chatWindow = document.getElementById('chatWindow');
-            const closeChat = document.getElementById('closeChat');
-            const chatInput = document.getElementById('chatInput');
-            const sendChat = document.getElementById('sendChat');
-            const chatMessages = document.getElementById('chatMessages');
-
-            function toggleChat() {
-                chatWindow.classList.toggle('closed');
-                if (!chatWindow.classList.contains('closed')) {
-                    chatInput.focus();
-                }
-            }
-
-            toggleChatBtn.addEventListener('click', toggleChat);
-            closeChat.addEventListener('click', toggleChat);
-
-            function addMessage(text, isUser) {
-                const div = document.createElement('div');
-                div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
-                
-                const bubble = document.createElement('div');
-                bubble.className = isUser 
-                    ? 'bg-neo-rust text-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]'
-                    : 'bg-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]';
-                
-                // Allow simple line breaks
-                bubble.innerHTML = text.replace(/\n/g, '<br>');
-                div.appendChild(bubble);
-                chatMessages.appendChild(div);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function addTypingIndicator() {
-                const div = document.createElement('div');
-                div.className = 'flex justify-start typing-indicator-msg';
-                div.innerHTML = `
-                    <div class="bg-white border-2 border-black p-3 text-sm shadow-sm flex gap-1">
-                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                        <div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div>
-                    </div>
-                `;
-                chatMessages.appendChild(div);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                return div;
-            }
-
-            async function handleChat() {
-                const text = chatInput.value.trim();
-                if (!text) return;
-
-                addMessage(text, true);
-                chatInput.value = '';
-                
-                const loader = addTypingIndicator();
-                
-                // Gemini System Prompt
-                const systemPrompt = "You are the AI Assistant for Aarsh Resolution Professionals. You are an expert in the Indian Insolvency and Bankruptcy Code (IBC). Your goal is to explain complex legal concepts like CIRP, Liquidation, and Debt Resolution to potential clients in a professional, reassuring, yet concise manner. Do not give specific legal advice for a real case, but explain the general process. Keep tone 'Warm Corporate'.";
-
-                const response = await callGeminiAPI(text, systemPrompt);
-                
-                loader.remove();
-                addMessage(response, false);
-            }
-
-            sendChat.addEventListener('click', handleChat);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') handleChat();
-            });
-
-
-            // Feature 2: Smart Draft in Contact Form
-            const magicDraftBtn = document.getElementById('magicDraftBtn');
-            const messageBox = document.getElementById('messageBox');
-
-            magicDraftBtn.addEventListener('click', async () => {
-                const currentText = messageBox.value.trim();
-                let topic = currentText;
-
-                if (!topic) {
-                    topic = prompt("What would you like to inquire about? (e.g., 'Company Liquidation, textile sector, 50Cr debt')");
-                    if (!topic) return;
-                }
-
-                // UI Feedback
-                magicDraftBtn.innerText = "✨ Drafting...";
-                messageBox.setAttribute('placeholder', 'AI is writing your message...');
-                messageBox.value = ""; // Clear for effect
-                
-                const draftPrompt = `Draft a formal, professional business inquiry email to an Insolvency Professional Entity based on these keywords/topic: "${topic}". The tone should be urgent but professional. The sender is looking for expert resolution services. Keep it under 150 words.`;
-                const systemPrompt = "You are a professional business communication expert.";
-
-                const draft = await callGeminiAPI(draftPrompt, systemPrompt);
-
-                messageBox.value = draft;
-                magicDraftBtn.innerText = "✨ Smart Draft";
-            });
-
         });
     </script>
 </body>
 </html>
-
