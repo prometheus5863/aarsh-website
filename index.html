@@ -1,1038 +1,212 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarsh Resolution Professionals | Premier Insolvency Experts</title>
-    <meta name="description" content="IBBI Registered Insolvency Professional Entity (IPE/0115) based in Delhi. Expert CIRP, Liquidation, and Debt Resolution services.">
-    
-    <!-- Fonts: Space Grotesk (Headings) and Inter (Body) for that Neo-Brutal Tech feel -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Understanding Local Storage and Session Storage</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        Web Storage Guide
+        <span class="badge">localStorage & sessionStorage</span>
+      </h1>
+      <button class="theme-toggle" id="themeToggle">
+        <span id="themeIcon">🌞</span>
+        <span id="themeLabel">Light theme</span>
+      </button>
+    </header>
 
-    <!-- Tailwind Config for Custom Colors/Shadows -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'neo-bg': '#FDFBF7',     /* Warm Cream Background */
-                        'neo-dark': '#18181B',   /* Sharp Black/Charcoal */
-                        'neo-rust': '#C2410C',   /* Deep Rust Orange */
-                        'neo-blue': '#1E3A8A',   /* Corporate Navy */
-                        'neo-gray': '#E5E7EB',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'neo': '5px 5px 0px 0px #18181B', /* Hard Shadow */
-                        'neo-hover': '2px 2px 0px 0px #18181B', /* Compressed Shadow */
-                        'neo-rust': '5px 5px 0px 0px #C2410C',
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'scan': 'scan 2s linear infinite',
-                    },
-                    keyframes: {
-                        scan: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100%)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <main>
+      <section class="hero">
+        <h2>Understanding Local Storage and Session Storage</h2>
+        <p>
+          Welcome back! 🎉 This page walks through
+          <strong>localStorage</strong> and
+          <strong>sessionStorage</strong> — two essential tools for storing data
+          directly in the browser.
+        </p>
+        <p>We’ll explore:</p>
+        <ul>
+          <li>✅ What local storage and session storage are</li>
+          <li>✅ How to store and retrieve data</li>
+          <li>✅ How to clear stored values safely</li>
+          <li>✅ Best practices and common beginner mistakes</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">No backend required</span>
+          <span class="pill">Client-side only</span>
+          <span class="pill">Perfect for preferences & session state</span>
+        </div>
+      </section>
 
-    <style>
-        /* Custom Utilities */
-        body {
-            background-color: #FDFBF7;
-            color: #18181B;
-            overflow-x: hidden;
-        }
+      <section>
+        <h3>1. What Are Local Storage and Session Storage?</h3>
+        <p>
+          Both <code>localStorage</code> and <code>sessionStorage</code> are
+          part of the <strong>Web Storage API</strong>. Unlike cookies, values
+          stored here are:
+        </p>
+        <ul>
+          <li>Not automatically sent with HTTP requests</li>
+          <li>Accessible only via JavaScript in the browser</li>
+          <li>Ideal for client-only data such as preferences and UI state</li>
+        </ul>
 
-        /* Brutalist Borders */
-        .brutal-border {
-            border: 2px solid #18181B;
-        }
-        
-        .brutal-border-t { border-top: 2px solid #18181B; }
-        .brutal-border-b { border-bottom: 2px solid #18181B; }
-        .brutal-border-r { border-right: 2px solid #18181B; }
+        <div class="card">
+          <strong>Key differences at a glance:</strong>
+          <table>
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>localStorage</th>
+                <th>sessionStorage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Persistence</td>
+                <td>Persists after browser is closed</td>
+                <td>Cleared when tab or browser closes</td>
+              </tr>
+              <tr>
+                <td>Typical use</td>
+                <td>Theme, layout, user settings</td>
+                <td>Temporary selections, in-progress forms</td>
+              </tr>
+              <tr>
+                <td>Access</td>
+                <td colspan="2">
+                  Via global objects <code>localStorage</code> and
+                  <code>sessionStorage</code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-        /* Marquee Animation */
-        .marquee-container {
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: scroll-left 20s linear infinite;
-        }
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+      <section>
+        <h3>2. Storing and Retrieving Data</h3>
+        <p>
+          Both <code>localStorage</code> and <code>sessionStorage</code> store
+          <strong>key–value pairs</strong>, and both key and value must be
+          strings.
+        </p>
 
-        /* Chart Container Strict Sizing */
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            height: 300px;
-            margin: 0 auto;
-        }
+        <div class="two-col">
+          <div class="card">
+            <span class="tag">Example · Storing data</span>
+            <pre><code>// Local storage
+localStorage.setItem("username", "Alice");
 
-        /* Scroll Reveal Utility */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+// Session storage
+sessionStorage.setItem("sessionID", "123456");</code></pre>
+            <p class="small">
+              Here, <code>"username"</code> will persist across browser
+              restarts, while <code>"sessionID"</code> disappears when the tab
+              closes.
+            </p>
+          </div>
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #FDFBF7;
-            border-left: 2px solid #18181B;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C2410C;
-            border: 2px solid #18181B;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #18181B;
-        }
+          <div class="card">
+            <span class="tag">Example · Retrieving data</span>
+            <pre><code>// From local storage
+const username = localStorage.getItem("username");
+console.log(username); // "Alice"
 
-        /* Grain texture overlay for "Warm" feel */
-        .noise-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
+// From session storage
+const sessionID = sessionStorage.getItem("sessionID");
+console.log(sessionID); // "123456"</code></pre>
+            <p class="small">
+              If a key doesn’t exist, <code>getItem()</code> returns
+              <code>null</code>.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        /* Chat Widget Styles */
-        .chat-widget {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-        }
-        .chat-widget.closed {
-            transform: translateY(20px) scale(0.95);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .typing-dot {
-            animation: typing 1.4s infinite ease-in-out both;
-        }
-        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
-        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
-        
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
-        }
+      <section>
+        <h3>3. Interactive Demo: Set & View Stored Values</h3>
+        <div class="card">
+          <p class="small">
+            Try this: set a username and session ID. Reload the page to see what
+            persists.
+          </p>
 
-        /* Voice Wave Animation */
-        .voice-wave { display: inline-flex; align-items: center; gap: 2px; height: 20px; }
-        .voice-bar { width: 3px; background-color: #C2410C; animation: wave 1s ease-in-out infinite; }
-        .voice-bar:nth-child(1) { height: 40%; animation-delay: 0.1s; }
-        .voice-bar:nth-child(2) { height: 80%; animation-delay: 0.2s; }
-        .voice-bar:nth-child(3) { height: 50%; animation-delay: 0.3s; }
-        .voice-bar:nth-child(4) { height: 70%; animation-delay: 0.4s; }
-        @keyframes wave { 0%, 100% { height: 30%; } 50% { height: 100%; } }
-    </style>
-</head>
-<body class="antialiased selection:bg-neo-rust selection:text-white">
+          <div class="two-col">
+            <div>
+              <div class="label">Username (localStorage)</div>
+              <input type="text" id="demoUsername" placeholder="e.g. Alice" />
+              <div class="label" style="margin-top: 0.5rem">
+                Session ID (sessionStorage)
+              </div>
+              <input type="text" id="demoSessionId" placeholder="e.g. 123456" />
 
-    <!-- Noise Texture -->
-    <div class="noise-overlay"></div>
-
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-40 bg-neo-bg brutal-border-b transition-transform duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 group cursor-pointer">
-                    <div class="w-10 h-10 bg-neo-rust brutal-border shadow-neo group-hover:shadow-neo-hover transition-all duration-300 flex items-center justify-center">
-                        <span class="text-white font-display font-bold text-xl">A</span>
-                    </div>
-                    <span class="font-display font-bold text-xl tracking-tighter uppercase">Aarsh<span class="text-neo-rust">RP</span></span>
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#home" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Home</a>
-                    <a href="#about" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">About</a>
-                    <a href="#decoder" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm text-neo-rust">AI Decoder ✨</a>
-                    <a href="#services" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Services</a>
-                    <a href="#stats" class="font-bold hover:text-neo-rust transition-colors uppercase tracking-tight text-sm">Impact</a>
-                    <a href="#contact" class="px-6 py-2 bg-neo-dark text-white font-bold brutal-border hover:bg-neo-rust transition-colors shadow-neo hover:shadow-neo-hover uppercase text-sm transform hover:-translate-y-0.5">Contact Us</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="md:hidden p-2 brutal-border bg-white shadow-neo active:shadow-neo-hover transition-all">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+              <div class="btn-row">
+                <button class="btn btn-primary" id="saveDemo">
+                  Save to Storage
                 </button>
+                <button class="btn btn-ghost" id="clearDemo">Clear Keys</button>
+              </div>
             </div>
+
+            <div>
+              <div class="label">Current localStorage["username"]</div>
+              <div class="demo-output" id="localDisplay">(empty)</div>
+              <div class="label" style="margin-top: 0.6rem">
+                Current sessionStorage["sessionID"]
+              </div>
+              <div class="demo-output" id="sessionDisplay">(empty)</div>
+            </div>
+          </div>
         </div>
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden brutal-border-t bg-neo-bg absolute w-full">
-            <div class="flex flex-col p-4 space-y-4">
-                <a href="#home" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Home</a>
-                <a href="#about" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">About</a>
-                <a href="#decoder" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">AI Decoder</a>
-                <a href="#services" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Services</a>
-                <a href="#stats" class="font-bold hover:text-neo-rust p-2 border-b-2 border-transparent hover:border-neo-rust">Impact</a>
-                <a href="#contact" class="w-full text-center px-6 py-3 bg-neo-rust text-white font-bold brutal-border shadow-neo">Get In Touch</a>
-            </div>
+      </section>
+
+      <section>
+        <h3>4. Storing and Retrieving Non-String Data</h3>
+        <p>
+          Since Web Storage only supports strings, you must convert objects and
+          arrays using <code>JSON.stringify()</code> and
+          <code>JSON.parse()</code>.
+        </p>
+
+        <div class="card">
+          <span class="tag">Example · Object via JSON</span>
+          <pre><code>// Storing an object
+const user = { name: "Alice", age: 25 };
+localStorage.setItem("user", JSON.stringify(user));
+
+// Retrieving the object
+const storedUser = JSON.parse(localStorage.getItem("user"));
+console.log(storedUser.name); // "Alice"</code></pre>
         </div>
-    </nav>
+      </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative pt-24 min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- Abstract Background Grid -->
-        <div class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#18181B 1px, transparent 1px), linear-gradient(90deg, #18181B 1px, transparent 1px); background-size: 40px 40px;"></div>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-3/5 z-10">
-                <div class="inline-block bg-neo-rust text-white px-3 py-1 font-bold text-xs uppercase tracking-widest mb-6 brutal-border shadow-neo reveal">IBBI Registered IPE/0115</div>
-                <h1 class="font-display font-bold text-5xl md:text-7xl leading-none mb-6 reveal" style="transition-delay: 100ms;">
-                    RESTORING <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-neo-rust to-orange-600">VALUE.</span> <br>
-                    RESOLVING <br>
-                    INSOLVENCY.
-                </h1>
-                <p class="text-lg md:text-xl text-gray-700 mb-8 max-w-lg font-medium reveal" style="transition-delay: 200ms;">
-                    Delhi's premier Insolvency Professional Entity. We navigate the complexities of CIRP and Liquidation with unyielding precision.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 300ms;">
-                    <a href="#services" class="px-8 py-4 bg-neo-dark text-white font-bold text-lg brutal-border shadow-neo hover:shadow-neo-hover hover:bg-neo-rust transition-all text-center">
-                        Explore Services
-                    </a>
-                    <a href="#contact" class="px-8 py-4 bg-white text-neo-dark font-bold text-lg brutal-border shadow-neo hover:shadow-neo-hover hover:bg-gray-50 transition-all text-center">
-                        Consult Now
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Hero Visual: Abstract Composition -->
-            <div class="w-full md:w-2/5 relative reveal" style="transition-delay: 400ms;">
-                <div class="aspect-square relative bg-white brutal-border shadow-neo overflow-hidden">
-                    <!-- Placeholder for High-End Corporate Image -->
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" alt="Corporate Architecture" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100">
-                    <div class="absolute inset-0 bg-neo-rust mix-blend-multiply opacity-20"></div>
-                    
-                    <!-- Floating Badge -->
-                    <div class="absolute bottom-0 right-0 bg-white p-6 brutal-border-t brutal-border-l">
-                        <p class="font-display font-bold text-4xl">100<span class="text-neo-rust">+</span></p>
-                        <p class="text-xs font-bold uppercase tracking-wider">Cases Handled</p>
-                    </div>
-                </div>
-            </div>
+      <section>
+        <h3>5. Clearing Data from Storage</h3>
+        <div class="two-col">
+          <div class="card">
+            <span class="tag">Remove individual items</span>
+            <pre><code>// Remove a single key
+localStorage.removeItem("username");
+sessionStorage.removeItem("sessionID");</code></pre>
+          </div>
+          <div class="card">
+            <span class="tag">Clear everything</span>
+            <pre><code>// ⚠ Irreversible for that storage
+localStorage.clear();      // Clears all localStorage keys
+sessionStorage.clear();    // Clears all sessionStorage keys</code></pre>
+          </div>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Marquee Section -->
-    <div class="bg-neo-rust py-6 brutal-border-t brutal-border-b overflow-hidden relative z-20">
-        <div class="marquee-container">
-            <div class="marquee-content font-display font-bold text-3xl text-white uppercase tracking-tighter">
-                &nbsp;• Insolvency Resolution • Liquidation Process • Debt Restructuring • Corporate Advisory • IBBI Registered • Trusted by Banks • Financial Analysis • Legal Compliance • Asset Management • Insolvency Resolution • Liquidation Process • Debt Restructuring • Corporate Advisory • IBBI Registered • Trusted by Banks •
-            </div>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div class="order-2 md:order-1 reveal">
-                    <h2 class="font-display font-bold text-4xl md:text-5xl mb-6">WHO WE <span class="text-neo-rust underline decoration-4 underline-offset-4">ARE</span></h2>
-                    <p class="text-lg text-gray-800 mb-6 leading-relaxed">
-                        Aarsh Resolution Professionals Pvt. Ltd. is a recognized Insolvency Professional Entity (IPE), bridging the gap between financial distress and resolution.
-                    </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        Founded by Mr. Atul Mittal, our team brings decades of experience in banking, finance, and law. We don't just manage insolvency; we engineer pathways to value recovery. Our approach is brutal in efficiency yet warm in client relations.
-                    </p>
-                    
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3">
-                            <div class="w-2 h-2 bg-neo-rust brutal-border"></div>
-                            <span class="font-bold">IBBI Registration No: IBBI/IPE/0115</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-2 h-2 bg-neo-rust brutal-border"></div>
-                            <span class="font-bold">Expertise across 12+ Industries</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <div class="w-2 h-2 bg-neo-rust brutal-border"></div>
-                            <span class="font-bold">Empanelled with Major Public Sector Banks</span>
-                        </li>
-                    </ul>
-
-                    <a href="#team" class="inline-block border-b-2 border-neo-dark font-bold hover:text-neo-rust hover:border-neo-rust transition-colors pb-1">Meet The Leadership -></a>
-                </div>
-
-                <!-- Interactive Stats/Graph Placeholder -->
-                <div class="order-1 md:order-2 reveal">
-                    <div class="bg-neo-bg p-6 brutal-border shadow-neo relative">
-                        <h3 class="font-display font-bold text-xl mb-4 text-center">Experience Distribution</h3>
-                        <div class="chart-container">
-                            <canvas id="experienceChart"></canvas>
-                        </div>
-                        <div class="absolute -top-4 -right-4 bg-neo-dark text-white p-3 brutal-border transform rotate-3">
-                            <span class="font-bold font-display">Since 2010</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURE: THE LEGAL DECODER (GEMINI POWERED) -->
-    <section id="decoder" class="py-24 bg-neo-dark text-white relative overflow-hidden border-t-2 border-b-2 border-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 reveal">
-                <div class="inline-block bg-neo-rust px-4 py-1 font-bold uppercase tracking-widest text-sm mb-4 transform -rotate-2 brutal-border border-white">New Tool</div>
-                <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">LEGAL <span class="text-neo-rust">DECODER</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto text-lg">Confused by complex insolvency jargon? Paste the legal text below, and our AI will translate it into plain English.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 reveal">
-                <!-- Input Terminal -->
-                <div class="bg-black p-1 brutal-border border-white shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
-                    <div class="bg-gray-900 h-full p-6 flex flex-col">
-                        <div class="flex justify-between items-center mb-4 border-b border-gray-700 pb-2">
-                            <span class="font-mono text-xs text-neo-rust">INPUT_SOURCE.txt</span>
-                            <div class="flex gap-1"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-yellow-500"></div><div class="w-3 h-3 rounded-full bg-green-500"></div></div>
-                        </div>
-                        <textarea id="decoderInput" class="w-full h-48 bg-transparent text-green-400 font-mono text-sm focus:outline-none resize-none" placeholder="// Paste legal text here (e.g., 'Section 29A of IBC states that...')"></textarea>
-                        <button id="decodeBtn" class="mt-4 w-full bg-neo-rust hover:bg-white hover:text-black text-white font-bold py-3 uppercase tracking-wider transition-colors border border-white flex justify-center items-center gap-2">
-                            <span>✨ Decrypt Text</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Output Terminal -->
-                <div class="bg-neo-bg p-1 brutal-border border-white shadow-[8px_8px_0px_0px_#C2410C]">
-                    <div class="bg-white h-full p-6 flex flex-col relative overflow-hidden text-black">
-                         <div class="flex justify-between items-center mb-4 border-b-2 border-black pb-2">
-                            <span class="font-mono text-xs font-bold">SIMPLIFIED_OUTPUT.md</span>
-                            <span class="font-mono text-xs bg-black text-white px-2">READ_ONLY</span>
-                        </div>
-                        <div id="decoderOutput" class="flex-1 font-sans text-sm leading-relaxed overflow-y-auto">
-                            <p class="text-gray-400 italic">Waiting for input data...</p>
-                        </div>
-                        <!-- Scanning Line Animation -->
-                        <div id="scanLine" class="absolute inset-0 bg-gradient-to-b from-transparent via-neo-rust/20 to-transparent h-4 w-full pointer-events-none hidden animate-scan"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Grid (Neo-Brutal Cards) -->
-    <section id="services" class="py-24 bg-neo-bg border-t-2 border-neo-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center reveal">
-                <h2 class="font-display font-bold text-5xl mb-4">OUR <span class="bg-neo-rust text-white px-2">EXPERTISE</span></h2>
-                <p class="text-xl max-w-2xl mx-auto text-gray-600">Comprehensive solutions for the insolvency ecosystem.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">⚡</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">CIRP Services</h3>
-                    <p class="text-gray-600 mb-4">End-to-end management of Corporate Insolvency Resolution Process under IBC, 2016.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• Interim Finance Management</li>
-                        <li>• Committee of Creditors</li>
-                        <li>• Resolution Plans</li>
-                    </ul>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal" style="transition-delay: 100ms;">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">💧</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Liquidation</h3>
-                    <p class="text-gray-600 mb-4">Maximizing value during the liquidation of assets with strict regulatory adherence.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• Asset Valuation</li>
-                        <li>• E-Auction Management</li>
-                        <li>• Claims Verification</li>
-                    </ul>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">⚖️</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Legal Advisory</h3>
-                    <p class="text-gray-600 mb-4">Navigating the legal landscape of IBC, NCLT, and NCLAT proceedings.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• Litigation Support</li>
-                        <li>• Avoidance Applications</li>
-                        <li>• Regulatory Compliance</li>
-                    </ul>
-                </div>
-                 <!-- Service 4 -->
-                 <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal" style="transition-delay: 300ms;">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">📉</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Debt Restructuring</h3>
-                    <p class="text-gray-600 mb-4">Strategic financial engineering to revitalize distressed entities outside of court.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• OTS Proposals</li>
-                        <li>• Debt Swaps</li>
-                        <li>• Turnaround Strategy</li>
-                    </ul>
-                </div>
-
-                 <!-- Service 5 -->
-                 <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal" style="transition-delay: 400ms;">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">📋</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Personal Guarantor</h3>
-                    <p class="text-gray-600 mb-4">Resolution processes concerning Personal Guarantors to Corporate Debtors.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• Repayment Plans</li>
-                        <li>• Bankruptcy Trustee</li>
-                        <li>• Negotiations</li>
-                    </ul>
-                </div>
-
-                 <!-- Service 6 -->
-                 <div class="bg-white p-8 brutal-border shadow-neo hover:shadow-neo-hover hover:translate-x-[3px] hover:translate-y-[3px] transition-all duration-200 group cursor-pointer reveal" style="transition-delay: 500ms;">
-                    <div class="w-12 h-12 bg-neo-gray mb-6 flex items-center justify-center brutal-border group-hover:bg-neo-rust transition-colors">
-                        <span class="text-2xl">🤝</span>
-                    </div>
-                    <h3 class="font-display font-bold text-2xl mb-3">Voluntary Liquidation</h3>
-                    <p class="text-gray-600 mb-4">Efficient winding up of solvent companies under Section 59 of IBC.</p>
-                    <ul class="text-sm space-y-2 font-medium">
-                        <li>• Solvency Declarations</li>
-                        <li>• Asset Distribution</li>
-                        <li>• Final Dissolution</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Data & Impact Section (Visualizing the Rust/Robustness) -->
-    <section id="stats" class="py-24 bg-neo-dark text-white relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute top-0 right-0 p-12 opacity-10">
-            <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="50" cy="50" r="40" />
-                <path d="M50 10 L50 90 M10 50 L90 50" />
-            </svg>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <h2 class="font-display font-bold text-5xl mb-6">IMPACT BY THE <br><span class="text-neo-rust">NUMBERS</span></h2>
-                    <p class="text-gray-400 text-lg mb-8 max-w-md">Our track record speaks of reliability and speed. We handle high-stakes resolutions with a robust framework.</p>
-                    
-                    <div class="grid grid-cols-2 gap-8">
-                        <div>
-                            <div class="text-5xl font-bold font-display text-neo-rust counter" data-target="500">0</div>
-                            <div class="text-sm uppercase tracking-wider mt-2 border-t border-gray-700 pt-2">Cr+ Debt Resolved</div>
-                        </div>
-                        <div>
-                            <div class="text-5xl font-bold font-display text-white counter" data-target="100">0</div>
-                            <div class="text-sm uppercase tracking-wider mt-2 border-t border-gray-700 pt-2">Cases Handled</div>
-                        </div>
-                        <div>
-                            <div class="text-5xl font-bold font-display text-white counter" data-target="25">0</div>
-                            <div class="text-sm uppercase tracking-wider mt-2 border-t border-gray-700 pt-2">Years Experience</div>
-                        </div>
-                        <div>
-                            <div class="text-5xl font-bold font-display text-neo-rust counter" data-target="15">0</div>
-                            <div class="text-sm uppercase tracking-wider mt-2 border-t border-gray-700 pt-2">Industry Sectors</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Timeline/Process -->
-                <div class="bg-white/5 backdrop-blur-sm p-8 border border-gray-700 reveal">
-                    <h3 class="font-display font-bold text-2xl mb-6">The Aarsh Process</h3>
-                    <div class="space-y-8 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-0.5 before:bg-gray-700">
-                        <div class="relative pl-12">
-                            <div class="absolute left-2.5 top-1.5 w-3 h-3 bg-neo-rust rounded-full -translate-x-1/2"></div>
-                            <h4 class="font-bold text-xl">Analysis</h4>
-                            <p class="text-gray-400 text-sm mt-1">Deep dive into financial statements and creditor claims.</p>
-                        </div>
-                        <div class="relative pl-12">
-                            <div class="absolute left-2.5 top-1.5 w-3 h-3 bg-white rounded-full -translate-x-1/2"></div>
-                            <h4 class="font-bold text-xl">Strategy</h4>
-                            <p class="text-gray-400 text-sm mt-1">Formulating a resolution plan or liquidation strategy tailored to asset class.</p>
-                        </div>
-                        <div class="relative pl-12">
-                            <div class="absolute left-2.5 top-1.5 w-3 h-3 bg-white rounded-full -translate-x-1/2"></div>
-                            <h4 class="font-bold text-xl">Execution</h4>
-                            <p class="text-gray-400 text-sm mt-1">Process management, CoC meetings, and legal representation.</p>
-                        </div>
-                        <div class="relative pl-12">
-                            <div class="absolute left-2.5 top-1.5 w-3 h-3 bg-neo-rust rounded-full -translate-x-1/2"></div>
-                            <h4 class="font-bold text-xl">Resolution</h4>
-                            <p class="text-gray-400 text-sm mt-1">Final approval and handover/dissolution.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section id="team" class="py-24 bg-white brutal-border-b">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="font-display font-bold text-5xl mb-12 text-center reveal">THE <span class="text-neo-rust">LEADERSHIP</span></h2>
-            
-            <div class="flex flex-col md:flex-row gap-8 justify-center">
-                <!-- Leader Card 1 -->
-                <div class="w-full md:w-1/3 bg-neo-bg brutal-border shadow-neo p-6 reveal">
-                    <div class="w-full h-64 bg-gray-300 mb-6 brutal-border overflow-hidden relative group">
-                        <!-- Placeholder Image -->
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" alt="Atul Mittal">
-                    </div>
-                    <h3 class="font-display font-bold text-2xl">Atul Mittal</h3>
-                    <p class="text-neo-rust font-bold text-sm uppercase mb-4">Director & Managing Partner</p>
-                    <p class="text-gray-600 text-sm mb-4">
-                        A seasoned Chartered Accountant with extensive experience in audit, taxation, and insolvency. Leading the firm with a vision of ethical and efficient resolution.
-                    </p>
-                </div>
-
-                <!-- Leader Card 2 -->
-                <div class="w-full md:w-1/3 bg-neo-bg brutal-border shadow-neo p-6 reveal" style="transition-delay: 100ms;">
-                    <div class="w-full h-64 bg-gray-300 mb-6 brutal-border overflow-hidden relative group">
-                         <!-- Placeholder Image -->
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop" class="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" alt="Partner">
-                    </div>
-                    <h3 class="font-display font-bold text-2xl">Senior Partner</h3>
-                    <p class="text-neo-rust font-bold text-sm uppercase mb-4">Legal Head</p>
-                    <p class="text-gray-600 text-sm mb-4">
-                        Expert in corporate law and NCLT proceedings, ensuring that every resolution plan stands on solid legal ground.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-neo-bg relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white p-8 md:p-12 brutal-border shadow-neo reveal">
-                <div class="text-center mb-10">
-                    <h2 class="font-display font-bold text-4xl mb-2">INITIATE <span class="text-neo-rust">RESOLUTION</span></h2>
-                    <p class="text-gray-600">Fill out the form below. We respond with urgency.</p>
-                </div>
-
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block font-bold text-sm uppercase mb-2">Full Name</label>
-                            <input type="text" class="w-full p-4 bg-gray-50 brutal-border focus:outline-none focus:shadow-neo transition-shadow" placeholder="John Doe" required>
-                        </div>
-                        <div>
-                            <label class="block font-bold text-sm uppercase mb-2">Email Address</label>
-                            <input type="email" class="w-full p-4 bg-gray-50 brutal-border focus:outline-none focus:shadow-neo transition-shadow" placeholder="john@company.com" required>
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block font-bold text-sm uppercase mb-2">Subject</label>
-                        <select class="w-full p-4 bg-gray-50 brutal-border focus:outline-none focus:shadow-neo transition-shadow">
-                            <option>Corporate Insolvency (CIRP)</option>
-                            <option>Liquidation</option>
-                            <option>Advisory</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div class="relative">
-                        <div class="flex justify-between items-center mb-2">
-                             <label class="block font-bold text-sm uppercase">Message</label>
-                             <button type="button" id="magicDraftBtn" class="text-xs font-bold text-neo-rust flex items-center gap-1 hover:underline">
-                                 ✨ Smart Draft
-                             </button>
-                        </div>
-                        <textarea id="messageBox" rows="6" class="w-full p-4 bg-gray-50 brutal-border focus:outline-none focus:shadow-neo transition-shadow" placeholder="Describe your requirements or ask for a draft..." required></textarea>
-                    </div>
-                    <button type="submit" class="w-full py-4 bg-neo-rust text-white font-bold text-xl brutal-border shadow-neo hover:shadow-neo-hover hover:translate-y-1 transition-all">
-                        SEND MESSAGE
-                    </button>
-                </form>
-
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center border-t-2 border-gray-100 pt-8">
-                    <div>
-                        <h4 class="font-bold uppercase text-sm text-neo-rust">Visit Us</h4>
-                        <p class="text-sm mt-1">163, Balco Apartments,<br>Patparganj, Delhi - 110092</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold uppercase text-sm text-neo-rust">Call Us</h4>
-                        <p class="text-sm mt-1">+91-9871830777<br>Mon-Sat: 10am - 7pm</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold uppercase text-sm text-neo-rust">Email</h4>
-                        <p class="text-sm mt-1">contact@aaarshrp.com<br>info@aaarshrp.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-neo-dark text-white py-12 brutal-border-t">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-center md:text-left">
-                <span class="font-display font-bold text-2xl tracking-tighter uppercase">Aarsh<span class="text-neo-rust">RP</span></span>
-                <p class="text-gray-500 text-sm mt-2">© 2024 Aarsh Resolution Professionals Pvt. Ltd.<br>All Rights Reserved.</p>
-            </div>
-            <div class="flex gap-6">
-                <a href="#" class="text-gray-400 hover:text-neo-rust transition-colors font-bold uppercase text-sm">Privacy</a>
-                <a href="#" class="text-gray-400 hover:text-neo-rust transition-colors font-bold uppercase text-sm">Terms</a>
-                <a href="#" class="text-gray-400 hover:text-neo-rust transition-colors font-bold uppercase text-sm">Sitemap</a>
-            </div>
-        </div>
+    <footer>
+      <p>Web Storage Guide Example</p>
     </footer>
 
-    <!-- Chat Widget Integration -->
-    <div id="aiChat" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <!-- Chat Interface (Hidden by default) -->
-        <div id="chatWindow" class="chat-widget closed w-80 md:w-96 bg-white brutal-border shadow-neo mb-4 overflow-hidden flex flex-col h-[500px]">
-            <!-- Header -->
-            <div class="bg-neo-dark text-white p-4 flex justify-between items-center border-b-2 border-black">
-                <div>
-                    <h3 class="font-display font-bold text-lg flex items-center gap-2">
-                        <span>✨</span> Aarsh AI Advisor
-                    </h3>
-                    <p class="text-xs text-gray-400">Ask about Insolvency, CIRP, or Law.</p>
-                </div>
-                <button id="closeChat" class="hover:text-neo-rust transition-colors font-bold text-xl">&times;</button>
-            </div>
-            
-            <!-- Messages Area -->
-            <div id="chatMessages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-neo-bg">
-                <div class="flex justify-start">
-                    <div class="bg-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">
-                        Hello. I am the Aarsh AI Advisor. I can explain the Insolvency Resolution Process (CIRP), Liquidation, or draft legal queries for you. How can I assist?
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Input Area -->
-            <div class="p-3 bg-white border-t-2 border-black">
-                <!-- Voice Toggle -->
-                <div class="flex items-center justify-between mb-2 px-1">
-                    <span class="text-xs font-bold text-gray-500 uppercase">Voice Mode</span>
-                    <button id="voiceToggle" class="w-10 h-5 bg-gray-300 rounded-full relative transition-colors duration-200">
-                        <div class="w-3 h-3 bg-white rounded-full absolute top-1 left-1 transition-transform duration-200"></div>
-                    </button>
-                </div>
-                <div class="flex gap-2">
-                    <input type="text" id="chatInput" placeholder="Ask a question..." class="flex-1 p-2 bg-gray-50 border-2 border-black focus:outline-none focus:border-neo-rust text-sm font-medium">
-                    <button id="sendChat" class="px-4 py-2 bg-neo-rust text-white font-bold border-2 border-black hover:bg-neo-dark transition-colors">
-                        ➜
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Floating Action Button -->
-        <button id="toggleChatBtn" class="w-16 h-16 bg-neo-rust text-white brutal-border shadow-neo hover:shadow-neo-hover active:translate-y-1 transition-all flex items-center justify-center group">
-            <span class="text-3xl group-hover:scale-110 transition-transform">✨</span>
-        </button>
-    </div>
-
-    <!-- JSON-LD Structured Data (Preserved from Source) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Aarsh Resolution Professionals Private Limited",
-        "image": "https://aaarshrp.com/logo.png",
-        "description": "IBBI Registered Insolvency Professional Entity providing CIRP, Liquidation, and Debt Resolution services in Delhi NCR",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "163, Balco Apartments, Plot No. 58, IP Extension, Patparganj",
-            "addressLocality": "Delhi",
-            "postalCode": "110092",
-            "addressCountry": "IN"
-        },
-        "telephone": "+91-9871830777",
-        "email": "contact@aaarshrp.com",
-        "url": "https://aaarshrp.com",
-        "founder": {
-            "@type": "Person",
-            "name": "Atul Mittal",
-            "jobTitle": "Director & Managing Partner"
-        }
-    }
-    </script>
-
-    <!-- Interaction Logic -->
-    <script>
-        const apiKey = ""; // Runtime key
-        let isVoiceEnabled = false;
-
-        // --- GEMINI API HELPERS ---
-        
-        async function callGeminiText(prompt, systemInstruction) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-            
-            // Retry Logic
-            for (let i = 0; i < 3; i++) {
-                try {
-                    const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                    if(!res.ok) throw new Error(res.status);
-                    const data = await res.json();
-                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "System Error.";
-                } catch(e) { await new Promise(r => setTimeout(r, 1000 * (i+1))); }
-            }
-            return "Connection failed.";
-        }
-
-        async function callGeminiTTS(text) {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: text }] }],
-                generationConfig: {
-                    responseModalities: ["AUDIO"],
-                    speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: "Puck" } } }
-                }
-            };
-            
-            try {
-                const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-                if (!res.ok) return null;
-                const data = await res.json();
-                const base64Audio = data.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
-                if (!base64Audio) return null;
-                
-                // Decode Base64 to ArrayBuffer
-                const binaryString = window.atob(base64Audio);
-                const len = binaryString.length;
-                const bytes = new Uint8Array(len);
-                for (let i = 0; i < len; i++) { bytes[i] = binaryString.charCodeAt(i); }
-                
-                // Convert PCM (Audio/L16) to WAV
-                return pcmToWav(bytes.buffer, 24000); 
-            } catch (e) { console.error(e); return null; }
-        }
-
-        // --- PCM TO WAV UTILITY ---
-        function pcmToWav(pcmData, sampleRate) {
-            const numChannels = 1;
-            const bitsPerSample = 16;
-            const byteRate = sampleRate * numChannels * bitsPerSample / 8;
-            const blockAlign = numChannels * bitsPerSample / 8;
-            const dataSize = pcmData.byteLength;
-            const buffer = new ArrayBuffer(44 + dataSize);
-            const view = new DataView(buffer);
-
-            const writeString = (view, offset, string) => {
-                for (let i = 0; i < string.length; i++) view.setUint8(offset + i, string.charCodeAt(i));
-            };
-
-            writeString(view, 0, 'RIFF');
-            view.setUint32(4, 36 + dataSize, true);
-            writeString(view, 8, 'WAVE');
-            writeString(view, 12, 'fmt ');
-            view.setUint32(16, 16, true);
-            view.setUint16(20, 1, true); // PCM
-            view.setUint16(22, numChannels, true);
-            view.setUint32(24, sampleRate, true);
-            view.setUint32(28, byteRate, true);
-            view.setUint16(32, blockAlign, true);
-            view.setUint16(34, bitsPerSample, true);
-            writeString(view, 36, 'data');
-            view.setUint32(40, dataSize, true);
-            
-            new Uint8Array(buffer, 44).set(new Uint8Array(pcmData));
-            return buffer;
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Voice Toggle Logic
-            const voiceToggle = document.getElementById('voiceToggle');
-            const toggleDot = voiceToggle.querySelector('div');
-            
-            voiceToggle.addEventListener('click', () => {
-                isVoiceEnabled = !isVoiceEnabled;
-                if (isVoiceEnabled) {
-                    voiceToggle.classList.remove('bg-gray-300');
-                    voiceToggle.classList.add('bg-neo-rust');
-                    toggleDot.classList.add('translate-x-5');
-                } else {
-                    voiceToggle.classList.add('bg-gray-300');
-                    voiceToggle.classList.remove('bg-neo-rust');
-                    toggleDot.classList.remove('translate-x-5');
-                }
-            });
-
-            // 2. Chat Logic (Upgraded with TTS)
-            const chatMessages = document.getElementById('chatMessages');
-            const chatInput = document.getElementById('chatInput');
-            
-            function addMessage(text, isUser, isAudio = false) {
-                const div = document.createElement('div');
-                div.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
-                
-                let content = text.replace(/\n/g, '<br>');
-                if (isAudio) {
-                    content += `
-                        <div class="mt-2 flex items-center gap-2 text-xs font-bold text-gray-500 uppercase">
-                            <span>Playing Audio</span>
-                            <div class="voice-wave">
-                                <div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div><div class="voice-bar"></div>
-                            </div>
-                        </div>`;
-                }
-
-                div.innerHTML = `
-                    <div class="${isUser ? 'bg-neo-rust text-white' : 'bg-white'} border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">
-                        ${content}
-                    </div>`;
-                
-                chatMessages.appendChild(div);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            async function handleChat() {
-                const text = chatInput.value.trim();
-                if (!text) return;
-
-                addMessage(text, true);
-                chatInput.value = '';
-                
-                // Typing Indicator
-                const loader = document.createElement('div');
-                loader.className = 'flex justify-start';
-                loader.innerHTML = `<div class="bg-white border-2 border-black p-3 text-sm shadow-sm flex gap-1"><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div><div class="w-2 h-2 bg-gray-400 rounded-full typing-dot"></div></div>`;
-                chatMessages.appendChild(loader);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-
-                // Call Gemini
-                let systemPrompt = "You are the AI Assistant for Aarsh Resolution Professionals. Explain Indian Insolvency Code concepts clearly and professionally. Keep it concise.";
-                if (isVoiceEnabled) systemPrompt += " Keep the response suitable for spoken audio (short sentences, no bullet points).";
-
-                let responseText = await callGeminiText(text, systemPrompt);
-                let audioBuffer = null;
-
-                if (isVoiceEnabled) {
-                     audioBuffer = await callGeminiTTS(responseText);
-                }
-                
-                loader.remove();
-                addMessage(responseText, false, !!audioBuffer);
-
-                if (audioBuffer) {
-                    const blob = new Blob([audioBuffer], { type: 'audio/wav' });
-                    const audioUrl = URL.createObjectURL(blob);
-                    const audio = new Audio(audioUrl);
-                    audio.play();
-                }
-            }
-
-            document.getElementById('sendChat').addEventListener('click', handleChat);
-            chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleChat(); });
-            
-            // Toggle Chat Widget
-            const chatWindow = document.getElementById('chatWindow');
-            document.getElementById('toggleChatBtn').addEventListener('click', () => {
-                chatWindow.classList.toggle('closed');
-                if(!chatWindow.classList.contains('closed')) chatInput.focus();
-            });
-            document.getElementById('closeChat').addEventListener('click', () => chatWindow.classList.add('closed'));
-
-
-            // 3. Feature: The Legal Decoder
-            const decodeBtn = document.getElementById('decodeBtn');
-            const decoderInput = document.getElementById('decoderInput');
-            const decoderOutput = document.getElementById('decoderOutput');
-            const scanLine = document.getElementById('scanLine');
-
-            decodeBtn.addEventListener('click', async () => {
-                const text = decoderInput.value.trim();
-                if (!text) return;
-
-                decodeBtn.disabled = true;
-                decodeBtn.innerHTML = "<span>Processing...</span>";
-                scanLine.classList.remove('hidden');
-                decoderOutput.innerHTML = "<p class='text-gray-400 italic'>Analyzing legal syntax...</p>";
-
-                const prompt = `Rewrite this legal text into simple, plain English that a non-lawyer can understand. Break it down if necessary. Text: "${text}"`;
-                const systemPrompt = "You are an expert legal translator. Your goal is extreme clarity. Remove jargon.";
-
-                const result = await callGeminiText(prompt, systemPrompt);
-
-                scanLine.classList.add('hidden');
-                decoderOutput.innerHTML = `<p class="font-bold mb-2">Analysis Complete:</p><p>${result.replace(/\n/g, '<br>')}</p>`;
-                decodeBtn.disabled = false;
-                decodeBtn.innerHTML = "<span>✨ Decrypt Text</span>";
-            });
-
-
-            // --- EXISTING LOGIC PRESERVED ---
-
-            // Navigation Logic
-            const navbar = document.getElementById('navbar');
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    mobileMenu.classList.add('hidden');
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if(target) target.scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('shadow-neo');
-                    navbar.classList.remove('py-4');
-                } else {
-                    navbar.classList.remove('shadow-neo');
-                    navbar.classList.add('py-4');
-                }
-            });
-
-            // Reveal Animation
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('active');
-                });
-            }, observerOptions);
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-            // Counter Logic
-            const counterObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = parseInt(entry.target.getAttribute('data-target'));
-                        const duration = 2000;
-                        const startTime = performance.now();
-                        function update(currentTime) {
-                            const elapsed = currentTime - startTime;
-                            const progress = Math.min(elapsed / duration, 1);
-                            const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                            entry.target.innerText = Math.floor(target * ease);
-                            if (progress < 1) requestAnimationFrame(update);
-                            else entry.target.innerText = target + (target > 100 ? '+' : '');
-                        }
-                        requestAnimationFrame(update);
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
-
-            // Chart.js
-            const ctx = document.getElementById('experienceChart').getContext('2d');
-            Chart.defaults.font.family = "'Space Grotesk', sans-serif";
-            new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Banking', 'Legal', 'Operations', 'Finance'],
-                    datasets: [{
-                        label: 'Expertise Mix',
-                        data: [40, 25, 20, 15],
-                        backgroundColor: ['#1E3A8A', '#C2410C', '#18181B', '#9CA3AF'],
-                        borderWidth: 2,
-                        borderColor: '#18181B',
-                        hoverOffset: 10
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'bottom', labels: { color: '#18181B', font: { weight: 'bold' }, usePointStyle: true, boxWidth: 10 } },
-                        tooltip: { backgroundColor: '#18181B', titleFont: { family: 'Space Grotesk' }, bodyFont: { family: 'Inter' }, padding: 12, cornerRadius: 0, displayColors: true }
-                    },
-                    cutout: '60%',
-                    animation: { animateScale: true, animateRotate: true }
-                }
-            });
-
-            // Smart Draft Logic
-            const magicDraftBtn = document.getElementById('magicDraftBtn');
-            const messageBox = document.getElementById('messageBox');
-            magicDraftBtn.addEventListener('click', async () => {
-                const currentText = messageBox.value.trim();
-                let topic = currentText;
-                if (!topic) {
-                    topic = prompt("What would you like to inquire about?");
-                    if (!topic) return;
-                }
-                magicDraftBtn.innerText = "✨ Drafting...";
-                messageBox.placeholder = 'AI is writing your message...';
-                messageBox.value = ""; 
-                const draft = await callGeminiText(`Draft a formal inquiry about: "${topic}".`, "Professional tone.");
-                messageBox.value = draft;
-                magicDraftBtn.innerText = "✨ Smart Draft";
-            });
-
-            // Contact Form
-            document.getElementById('contactForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector('button[type="submit"]');
-                const originalText = btn.innerText;
-                btn.innerText = "SENDING...";
-                btn.disabled = true;
-                btn.classList.add('opacity-75');
-                setTimeout(() => {
-                    btn.innerText = "MESSAGE SENT ✓";
-                    btn.classList.replace('bg-neo-rust', 'bg-green-600');
-                    e.target.reset();
-                    setTimeout(() => {
-                        btn.innerText = originalText;
-                        btn.disabled = false;
-                        btn.classList.remove('opacity-75');
-                        btn.classList.replace('bg-green-600', 'bg-neo-rust');
-                    }, 3000);
-                }, 1500);
-            });
-        });
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
