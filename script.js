@@ -1,6 +1,54 @@
 // --- CONFIGURATION ---
 // NOTE: For a real deployment, never expose keys in client-side code. Use a backend proxy.
-const API_KEY = "YOUR_GEMINI_API_KEY_HERE"; 
+// With the placeholder left in place the site runs in DEMO MODE: the assistant, the decoder and the
+// drafting button answer from the small built-in library below instead of calling an AI model.
+const API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+const DEMO_MODE = API_KEY === "YOUR_GEMINI_API_KEY_HERE";
+
+// Text typed by a visitor is shown back on the page, so it is always escaped first.
+const escapeHTML = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+// --- DEMO ANSWERS (shown when no AI key is configured) ---
+const DEMO_NOTE = "Demo answer. The live site answers with an AI model; this build ships with a fixed set of replies. General information only, not legal advice.";
+const DEMO_ANSWERS = [
+    { keys: ['cirp', 'corporate insolvency', 'resolution process'],
+      text: "CIRP is the Corporate Insolvency Resolution Process under the Insolvency and Bankruptcy Code, 2016. Once the NCLT admits an application, an Interim Resolution Professional takes over management, a moratorium begins, creditors file claims, and the Committee of Creditors looks for a resolution plan. The process is meant to finish in 180 days, extendable by 90, with an outer limit of 330 days including litigation." },
+    { keys: ['moratorium', 'section 14'],
+      text: "The moratorium under Section 14 starts when the NCLT admits the case. While it lasts, suits and recovery actions against the company are paused, its assets cannot be transferred, and security interests cannot be enforced. It ends when a resolution plan is approved or liquidation is ordered." },
+    { keys: ['coc', 'committee of creditors'],
+      text: "The Committee of Creditors is made up of the company's financial creditors. It takes the key commercial decisions in a CIRP, including appointing the Resolution Professional and approving a resolution plan, which needs at least 66% of the voting share." },
+    { keys: ['form g', 'expression of interest', 'eoi'],
+      text: "Form G is the public invitation for expressions of interest from prospective resolution applicants. The Resolution Professional publishes it under Regulation 36A of the CIRP Regulations, with the eligibility criteria and the last date to respond." },
+    { keys: ['liquidat'],
+      text: "If no resolution plan is approved in time, or the Committee of Creditors decides to liquidate, the NCLT orders liquidation under Section 33. A liquidator sells the assets and pays creditors in the order set by Section 53 of the Code." },
+    { keys: ['irp', 'resolution professional', ' rp '],
+      text: "The Interim Resolution Professional is appointed when the case is admitted and runs the company from that day. The Committee of Creditors then confirms them as Resolution Professional or replaces them. The RP manages the company as a going concern, verifies claims and conducts the resolution process." },
+    { keys: ['nclt', 'tribunal', 'adjudicating'],
+      text: "The National Company Law Tribunal is the Adjudicating Authority for corporate insolvency. It admits or rejects applications, approves resolution plans and orders liquidation. Appeals go to the NCLAT." },
+    { keys: ['threshold', 'default', 'minimum amount', 'how much'],
+      text: "An application can be filed when the default is at least Rs. 1 crore. Financial creditors file under Section 7, operational creditors under Section 9 after a demand notice, and the company itself under Section 10." },
+    { keys: ['claim', 'creditor', 'file'],
+      text: "After the public announcement, creditors submit their claims with proof to the Resolution Professional in the prescribed forms. Financial creditors with verified claims sit on the Committee of Creditors; operational creditors are paid according to the approved plan." },
+];
+const DEMO_FALLBACK = "I can explain the basics of the Insolvency and Bankruptcy Code: CIRP, the moratorium, the Committee of Creditors, Form G, liquidation, the NCLT and filing thresholds. Try asking about one of those.";
+
+function demoAnswer(question) {
+    const q = ` ${question.toLowerCase()} `;
+    const hit = DEMO_ANSWERS.find((a) => a.keys.some((k) => q.includes(k)));
+    return hit ? hit.text : DEMO_FALLBACK;
+}
+
+function demoDecode(text) {
+    const q = ` ${text.toLowerCase()} `;
+    const hits = DEMO_ANSWERS.filter((a) => a.keys.some((k) => q.includes(k))).slice(0, 3);
+    if (!hits.length) return "This demo build recognises common insolvency terms (CIRP, moratorium, Committee of Creditors, Form G, liquidation, NCLT). Paste a notice that uses them and each one is explained in plain language.";
+    return "In plain language, the terms in this text mean:\n\n" + hits.map((h) => "• " + h.text).join("\n\n");
+}
+
+function demoDraft(topic) {
+    return `Dear Sir/Madam,\n\nI am writing to seek your guidance regarding ${topic}.\n\nI would be grateful if you could advise on the options available under the Insolvency and Bankruptcy Code, 2016, the likely timeline, and the documents you would need from us to begin.\n\nPlease let me know a convenient time for a call.\n\nYours faithfully,\n[Name]\n[Organisation]\n[Phone]`;
+}
+
 
 let isVoiceEnabled = true;
 
@@ -131,8 +179,10 @@ trackBtn.addEventListener('click', () => {
             statusBar.style.width = mockCases[id].percent + '%';
         }, 100);
     } else {
-        alert('Case ID not found. Try CASE-001, CASE-002, or CASE-003');
-        trackerResult.classList.add('hidden');
+        // Show the hint in the page instead of a blocking alert box.
+        trackerResult.classList.remove('hidden');
+        statusTitle.innerText = 'NOT FOUND';
+        statusDesc.innerText = 'No case with that ID in this demo. Try CASE-001, CASE-002 or CASE-003.';
         statusBar.style.width = '0%';
     }
 });
@@ -140,9 +190,7 @@ trackBtn.addEventListener('click', () => {
 
 // --- 4. GEMINI API HELPERS ---
 async function callGeminiText(prompt, systemInstruction) {
-    if(API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-        return "Error: API Key missing in script.js";
-    }
+    if (DEMO_MODE) return null;   // callers fall back to the built-in demo answers
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
     const payload = {
         contents: [{ parts: [{ text: prompt }] }],
@@ -157,7 +205,7 @@ async function callGeminiText(prompt, systemInstruction) {
 }
 
 async function callGeminiTTS(text) {
-    if(API_KEY === "YOUR_GEMINI_API_KEY_HERE") return null;
+    if (DEMO_MODE) return null;
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${API_KEY}`;
     const payload = {
         contents: [{ parts: [{ text: text }] }],
@@ -225,7 +273,7 @@ async function handleChat() {
     if (!text) return;
 
     // Add User Message
-    chatMessages.innerHTML += `<div class="flex justify-end"><div class="bg-neo-rust text-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">${text}</div></div>`;
+    chatMessages.innerHTML += `<div class="flex justify-end"><div class="bg-neo-rust text-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">${escapeHTML(text)}</div></div>`;
     chatInput.value = '';
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -238,11 +286,12 @@ async function handleChat() {
     let systemPrompt = "You are the AI Assistant for Aarsh Resolution Professionals. Explain Indian Insolvency Code concepts clearly.";
     if (isVoiceEnabled) systemPrompt += " Keep response suitable for spoken audio (short sentences).";
     
-    const responseText = await callGeminiText(text, systemPrompt);
+    const live = await callGeminiText(text, systemPrompt);
+    const responseText = live === null ? demoAnswer(text) : live;
     document.getElementById(loaderId).remove();
 
     // Add Bot Message
-    let msgHTML = `<div class="flex justify-start"><div class="bg-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">${responseText}</div></div>`;
+    let msgHTML = `<div class="flex justify-start"><div class="bg-white border-2 border-black p-3 text-sm shadow-sm max-w-[85%]">${escapeHTML(responseText).replace(/\n/g, '<br>')}${live === null ? `<div class="mt-2 pt-2 border-t border-gray-300 text-[11px] text-gray-500">${DEMO_NOTE}</div>` : ''}</div></div>`;
     if (isVoiceEnabled) {
         const audioBuffer = await callGeminiTTS(responseText);
         if (audioBuffer) {
@@ -282,7 +331,8 @@ decodeBtn.addEventListener('click', async () => {
     scanLine.classList.remove('hidden');
     decoderOutput.innerHTML = "<p class='text-gray-400 italic'>Analyzing legal syntax...</p>";
 
-    const result = await callGeminiText(`Explain this legal text in simple terms: "${text}"`, "You are a legal translator. Be clear and concise.");
+    const liveResult = await callGeminiText(`Explain this legal text in simple terms: "${text}"`, "You are a legal translator. Be clear and concise.");
+    const result = escapeHTML(liveResult === null ? demoDecode(text) + "\n\n" + DEMO_NOTE : liveResult);
     
     scanLine.classList.add('hidden');
     decoderOutput.innerHTML = `<p class="font-bold mb-2">Analysis Complete:</p><p>${result.replace(/\n/g, '<br>')}</p>`;
@@ -296,5 +346,6 @@ document.getElementById('magicDraftBtn').addEventListener('click', async () => {
     const topic = box.value || prompt("What is the topic?");
     if(!topic) return;
     box.value = "Drafting...";
-    box.value = await callGeminiText(`Draft a formal inquiry about: "${topic}"`, "Formal business tone.");
+    const draft = await callGeminiText(`Draft a formal inquiry about: "${topic}"`, "Formal business tone.");
+    box.value = draft === null ? demoDraft(topic) : draft;
 });
