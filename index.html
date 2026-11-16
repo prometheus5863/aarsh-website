@@ -75,34 +75,10 @@
     
     <link rel="stylesheet" href="style.css">
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="tailwind.css">
+    <script src="vendor/chart.umd.js"></script>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'neo-bg': 'var(--bg-color)',
-                        'neo-text': 'var(--text-color)',
-                        'neo-dark': '#18181B', 
-                        'neo-rust': '#C2410C', 
-                        'neo-blue': '#1E3A8A',
-                        'neo-gray': '#E5E7EB',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'neo': '5px 5px 0px 0px #18181B',
-                        'neo-hover': '2px 2px 0px 0px #18181B',
-                    }
-                }
-            }
-        }
-    </script>
+    
 </head>
 <body class="antialiased selection:bg-neo-rust selection:text-white transition-colors duration-300">
 
